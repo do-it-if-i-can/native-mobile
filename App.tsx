@@ -2,7 +2,6 @@ import { ApolloProvider } from "@apollo/client";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { RecoilRoot } from "recoil";
 import { SWRConfig } from "swr";
 
 import { Toaster } from "~/components/Toaster";
@@ -26,13 +25,11 @@ const App = () => {
         }}
       >
         <ApolloProvider client={apolloClient}>
-          <RecoilRoot>
-            <SafeAreaProvider>
-              <Navigations colorScheme={colorScheme} />
-              <StatusBar />
-              <Toaster position="bottom-center" />
-            </SafeAreaProvider>
-          </RecoilRoot>
+          <SafeAreaProvider>
+            <Navigations colorScheme={colorScheme} />
+            <StatusBar />
+            <Toaster position="bottom-center" />
+          </SafeAreaProvider>
         </ApolloProvider>
       </SWRConfig>
     );
