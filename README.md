@@ -119,6 +119,8 @@
   - 🗂 utils
     - 🗂 zzzXzz
       - index.ts（zzzXzz 配下のファイルを export）
-      - XXX_XXX.ts
-      - XXX_XXX.ts
+      - zzzXzz.ts
+      - zzzXzz.ts
+    - zzzXzz.ts
+  - 🗂 stores
     - zzzXzz.ts
