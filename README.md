@@ -1,4 +1,4 @@
-# できたらやる native-mobile repository
+# やれたらやる native-mobile repository
 
 ## 開発環境
 
@@ -8,9 +8,21 @@
 
 ## コミットルール
 
+### ブランチ名
+
+- 以下の規則に従う
+
+`[feature, fix, refactor, doc, test]/zzz-zzzXzz`
+
+例： feature/ui-button
+
+### コミットメッセージ
+
 - Gitmoji を使用する
 
-## 命名規則
+> https://marketplace.visualstudio.com/items?itemName=seatonjiang.gitmoji-vscode
+
+例： ✨ Button コンポーネント作成
 
 ### 関数
 
@@ -42,18 +54,17 @@
 
 - 🗂 src
   - 🗂 compoennts
-    - 🗂 modal
-      - 🗂 XzzXzz
-        - index.ts
-        - XzzXzz.tsx
-        - XzzXzz.modal.tsx
-        - XzzXzz.stories.tsx
-        - useXzzXzz.hook.ts
     - 🗂 screen
       - 🗂 XzzXzz
         - index.ts
         - XzzXzz.tsx
         - XzzXzz.screen.tsx
+        - XzzXzz.stories.tsx
+        - useXzzXzz.hook.ts
+      - 🗂 XzzModal
+        - index.ts
+        - XzzXzz.tsx
+        - XzzXzz.modal.tsx
         - XzzXzz.stories.tsx
         - useXzzXzz.hook.ts
       - 🗂 User
