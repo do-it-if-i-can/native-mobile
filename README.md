@@ -8,11 +8,15 @@
 
 ## コミットルール
 
-### ブランチ名
+### ブランチ
 
-- 以下の規則に従う
+- main（本番環境用）
+  - develop ブランチのみ、PullRequest & merge 可能
+- develop（開発環境用）
+  - main ブランチ以外、PullRequest & merge 可能
+- 命名規則は以下に従う
 
-`[feature, fix, refactor, doc, test]/zzz-zzzXzz`
+`[feature, fix, refactor, doc, test]/zzz-zzz`
 
 例： feature/ui-button
 
@@ -50,7 +54,7 @@
 - src フォルダの直下は、複数形フォルダ名を定義する
 - src フォルダの二階層下以降は、単数形フォルダ名を定義する
 
-> 参考記事 https://zenn.dev/yoshiko/articles/99f8047555f700
+> 参考記事：https://zenn.dev/yoshiko/articles/99f8047555f700
 
 - 🗂 src
   - 🗂 compoennts
