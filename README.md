@@ -59,16 +59,17 @@
 - 🗂 src
   - 🗂 compoennts
     - 🗂 screen
+      - 🗂 modal
+        - 🗂 XzzXzz
+          - index.ts
+          - XzzXzz.tsx
+          - XzzXzz.modal.tsx
+          - XzzXzz.stories.tsx
+          - useXzzXzz.hook.ts
       - 🗂 XzzXzz
         - index.ts
         - XzzXzz.tsx
         - XzzXzz.screen.tsx
-        - XzzXzz.stories.tsx
-        - useXzzXzz.hook.ts
-      - 🗂 XzzModal
-        - index.ts
-        - XzzXzz.tsx
-        - XzzXzz.modal.tsx
         - XzzXzz.stories.tsx
         - useXzzXzz.hook.ts
       - 🗂 User
@@ -101,41 +102,46 @@
     - 🗂 zzzXzz
       - index.ts（zzzXzz 配下のファイルを export）
       - XXX_XXX.ts
-      - XXX_XXX.ts
     - XXX_XXX.ts
   - 🗂 functions
     - 🗂 zzzXzz
       - index.ts（zzzXzz 配下のファイルを export）
       - XXX_XXX.ts
-      - XXX_XXX.ts
     - zzzXzz.ts
   - 🗂 hooks
+    - 🗂 zzzXzz
+      - index.ts（zzzXzz 配下のファイルを export）
+      - useXzzXzz.ts
     - useXzzXzz.ts
-  - 🗂 navigations
-    - LinkingConfiguration.ts
-    - index.tsx
   - 🗂 screens
     - 🗂 auth
-      - XzzXzz.screeen.tsx
-      - XzzXzz.screeen.tsx
+      - zzz_zzz.screeen.tsx
+      - zzz_zzz.screeen.tsx
       - index.tsx（auth 内の navigation 定義）
     - 🗂 main
       - 🗂 sub
-        - XzzXzz.screeen.tsx
-        - XzzXzz.screeen.tsx
+        - zzz_zzz.screeen.tsx
+        - zzz_zzz.screeen.tsx
         - index.tsx（sub 内の navigation 定義）
-      - XzzXzz.screeen.tsx
-      - XzzXzz.screeen.tsx
+      - zzz_zzz.modal.tsx
+      - zzz_zzz.screeen.tsx
       - index.tsx（main 内の navigation 定義）
+    - index.tsx
     - 404.screen.tsx
+    - zzz_zzz.modal.tsx
   - 🗂 types
     - index.d.ts（ReactNavigation 用型定義）
     - zzz-zzz.d.ts（パッケージ用型定義ファイル）
+  - 🗂 styles
+    - 🗂 zzzXzz
+      - index.ts（zzzXzz 配下のファイルを export）
+      - zzzXzz.ts
+    - zzzXzz.ts
   - 🗂 utils
     - 🗂 zzzXzz
       - index.ts（zzzXzz 配下のファイルを export）
       - zzzXzz.ts
-      - zzzXzz.ts
     - zzzXzz.ts
+    - linkingConfiguration.ts
   - 🗂 stores
     - zzzXzz.ts
