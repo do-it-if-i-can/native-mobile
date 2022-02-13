@@ -15,14 +15,14 @@ export const TabTwoScreen: VFC<TabTwoScreenProps<"TabTwoScreen">> = () => {
   const { data, isError, isLoading } = useGetSWRdev<Post[]>("/post");
 
   const renderItem = ({ item }: { item: Post }) => {
-    const handleNavigation = () => {
+    const onNavigation = () => {
       console.info("item.id", item.id);
     };
 
     const date = format(new Date(item.updatedAt), "yyyy年M月d日");
 
     return (
-      <ListItem style={styles.list} onPress={handleNavigation}>
+      <ListItem style={styles.list} onPress={onNavigation}>
         <View>
           <Text style={styles.shopName}>{item.title}</Text>
           <Text style={styles.date} lightTextColor={color} darkTextColor={color}>
