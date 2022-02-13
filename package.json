@@ -15,7 +15,8 @@
     "fix:prettier": "prettier --write .",
     "codegen": "graphql-codegen --config src/graphql/codegen.yml",
     "dev:api": "json-server --watch mock/json-server.json --port 5000",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "jest": {
     "preset": "jest-expo"
@@ -27,8 +28,8 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
+      "yarn fix:prettier",
+      "yarn fix:eslint"
     ]
   },
   "dependencies": {
@@ -94,7 +95,7 @@
     "eslint-plugin-react-hooks": "4.2.1-alpha-fd5e01c2e-20210913",
     "eslint-plugin-react-native": "^4.0.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
-    "husky": "^7.0.4",
+    "husky": "^7.0.0",
     "jest-expo": "43.0.1",
     "lint-staged": "^12.3.3",
     "typescript": "4.3.5"
