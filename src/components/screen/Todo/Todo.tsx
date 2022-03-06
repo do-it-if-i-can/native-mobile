@@ -5,6 +5,7 @@ import { StyleSheet } from "react-native";
 import { Button, GoBackButton, PrevButton } from "~/components/ui/Button";
 import { Radio } from "~/components/ui/Radio";
 import { Text } from "~/components/ui/Text";
+import { TextInput } from "~/components/ui/TextInput";
 import { View } from "~/components/ui/View";
 
 import type { TodoScreenProps } from "./ScreenProps";
@@ -21,6 +22,8 @@ export const Todo: FC<TodoScreenProps> = (props) => {
       <Text color="color0">color0 color0 color0</Text>
       <Text color="color1">color1 color1 color1</Text>
       <Text color="color2">color2 color2 color2</Text>
+
+      <TextInput />
 
       <GoBackButton />
       <PrevButton {...props} screen="TodoScreen" />

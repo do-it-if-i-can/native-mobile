@@ -1,12 +1,12 @@
-import type { FC } from 'react';
-import React, { memo } from 'react';
-import { StyleSheet, TextInput as NativeTextInput } from 'react-native';
+import type { FC } from "react";
+import React, { memo } from "react";
+import { StyleSheet, TextInput as NativeTextInput } from "react-native";
 
-import { View } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
-import type { TextInputStyleProps } from '~/types/style';
+import { View } from "~/components/ui/View";
+import { useThemeColor } from "~/hooks/useThemeColor";
+import type { TextInputStyleProps } from "~/types/style";
 
-export type TextInputProps = Omit<NativeTextInput['props'], 'style'> &
+export type TextInputProps = Omit<NativeTextInput["props"], "style"> &
   TextInputStyleProps & {
     isBorder?: true;
   };
@@ -19,8 +19,8 @@ export const TextInput: FC<TextInputProps> = memo(
     lightColor: light,
     darkColor: dark,
     // custom theme
-    bg = 'bg4',
-    color: fontColor = 'color1',
+    bg = "bg2",
+    color: fontColor = "color1",
     // ViewProps
     isBorder,
     viewStyle,
@@ -30,7 +30,7 @@ export const TextInput: FC<TextInputProps> = memo(
     ...otherProps
   }) => {
     const color = useThemeColor({ light, dark }, fontColor);
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
+    const borderColor = useThemeColor({}, isBorder ? "border" : bg);
 
     return (
       <View
@@ -50,7 +50,7 @@ export const TextInput: FC<TextInputProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   bg: {
-    width: '100%',
+    width: "100%",
     paddingVertical: 12,
     paddingHorizontal: 15,
     borderRadius: 10,
@@ -59,7 +59,7 @@ const defaultStyle = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowColor: '#888888',
+    shadowColor: "#888888",
     shadowOpacity: 0.2,
     elevation: 1,
   },
