@@ -1,13 +1,13 @@
-import { ApolloProvider } from "@apollo/client";
+// import { ApolloProvider } from "@apollo/client";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { Toaster } from "~/components/Toaster";
+import { Toaster } from "~/components/ui/Toaster";
 import { useCachedResources } from "~/hooks/useCachedResources";
 import { useColorScheme } from "~/hooks/useColorScheme";
-import { Navigations } from "~/navigations";
-import { apolloClient } from "~/utils/apolloClient";
+import { Navigation } from "~/screens";
+// import { apolloClient } from "~/utils/apolloClient";
 
 const App = () => {
   const isLoadingComplete = useCachedResources();
@@ -17,13 +17,15 @@ const App = () => {
     return null;
   } else {
     return (
-      <ApolloProvider client={apolloClient}>
+      // <ApolloProvider client={apolloClient}>
+      <>
         <SafeAreaProvider>
-          <Navigations colorScheme={colorScheme} />
+          <Navigation colorScheme={colorScheme} />
           <StatusBar />
-          <Toaster position="bottom-center" />
         </SafeAreaProvider>
-      </ApolloProvider>
+        <Toaster position="bottom-center" />
+      </>
+      // </ApolloProvider>
     );
   }
 };
