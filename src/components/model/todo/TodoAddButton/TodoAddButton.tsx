@@ -10,7 +10,7 @@ export const TodoAddButton: FC = memo(() => {
   return (
     <View style={style.container}>
       <AntDesignIcon name="pluscircle" size={24} />
-      <Text style={style.todo_text} color={"color2"}>
+      <Text style={style.todo_text} color="color2">
         タスクを追加する
       </Text>
     </View>
