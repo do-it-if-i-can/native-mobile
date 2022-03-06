@@ -10,7 +10,7 @@ import { Todo } from "./Todo";
 export const TodoScreen: FC<TodoScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <SafeAreaLayout bg="bg2" isCenter>
+      <SafeAreaLayout bg="bg1" isCenter>
         <Todo {...props} />
       </SafeAreaLayout>
     </LayoutErrorBoundary>
