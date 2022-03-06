@@ -2,7 +2,7 @@ import type { FC } from "react";
 import React, { useState } from "react";
 import { InputAccessoryView, ScrollView, StyleSheet } from "react-native";
 
-import { TodoInput } from "~/components/model/Todo";
+import { TodoInput } from "~/components/model/todo/TodoInput";
 import { Button } from "~/components/ui/Button";
 import { Radio } from "~/components/ui/Radio";
 import { Text } from "~/components/ui/Text";
