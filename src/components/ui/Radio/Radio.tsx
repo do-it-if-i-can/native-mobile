@@ -42,12 +42,12 @@ const defaultStyle = StyleSheet.create({
 
     width: 24,
     height: 24,
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 999,
   },
   active: {
-    width: 12,
-    height: 12,
+    width: 16,
+    height: 16,
     borderRadius: 999,
   },
 });

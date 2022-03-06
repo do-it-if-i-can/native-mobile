@@ -1,9 +1,9 @@
-import type { FC, ReactNode } from 'react';
-import React from 'react';
-import { StyleSheet } from 'react-native';
+import type { FC, ReactNode } from "react";
+import React from "react";
+import { StyleSheet } from "react-native";
 
-import { SafeAreaView, View } from '~/components/ui/View';
-import type { CustomViewStyleProps } from '~/types/style';
+import { SafeAreaView, View } from "~/components/ui/View";
+import type { CustomViewStyleProps } from "~/types/style";
 
 type LayoutProps = CustomViewStyleProps & {
   children: ReactNode;
@@ -15,7 +15,7 @@ export const SafeAreaLayout: FC<LayoutProps> = ({
   lightBg,
   darkBg,
   // custom theme
-  bg = 'bg1',
+  bg = "bg1",
   // ViewProps
   viewStyle,
   children,
@@ -33,7 +33,7 @@ const defaultStyle = StyleSheet.create({
     flex: 1,
   },
   center: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
