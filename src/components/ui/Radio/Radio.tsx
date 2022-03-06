@@ -25,7 +25,7 @@ export const Radio = <T,>({
   const borderColor = useThemeColor({}, "border");
 
   const onPress = useCallback(() => {
-    onChangeValue && onChangeValue(value);
+    onChangeValue && onChangeValue((prev) => (prev === value ? activeValue : value));
   }, [onChangeValue, value]);
 
   return (
