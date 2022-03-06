@@ -16,6 +16,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "@react-native-community",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -40,6 +41,9 @@ module.exports = {
     "react-native",
   ],
   rules: {
+    semi: ["error", "always"],
+    quotes: ["error", "double"],
+
     "linebreak-style": ["error", "unix"],
 
     "react-native/no-unused-styles": "warn",
