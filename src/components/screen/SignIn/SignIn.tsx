@@ -11,25 +11,25 @@ import type { SignInScreenProps } from "./ScreenProps";
 export const SignIn: FC<SignInScreenProps> = () => {
   return (
     <View style={style.container}>
-      <View style={style.iconArea}>
+      <View style={style.icon_area}>
         <QinTodo />
       </View>
 
       <Button
         leftIcon={<Google />}
         label="Googleでサインイン"
-        outlineStyle={style.buttonOutline}
-        viewStyle={style.buttonBg}
-        textStyle={style.buttonText}
+        outlineStyle={style.button_outline}
+        viewStyle={style.button_bg}
+        textStyle={style.button_text}
         bg="bg1"
       />
 
       <Button
         leftIcon={<Apple />}
         label="Appleでサインイン"
-        outlineStyle={style.buttonOutline}
-        viewStyle={style.buttonBg}
-        textStyle={style.buttonText}
+        outlineStyle={style.button_outline}
+        viewStyle={style.button_bg}
+        textStyle={style.button_text}
         lightBg="#333333"
         lightColor="#FFF"
       />
@@ -41,18 +41,18 @@ const style = StyleSheet.create({
   container: {
     padding: "6%",
   },
-  iconArea: {
+  icon_area: {
     justifyContent: "center",
     alignItems: "center",
     marginBottom: "15%",
   },
-  buttonOutline: {
+  button_outline: {
     marginBottom: "4%",
   },
-  buttonBg: {
+  button_bg: {
     height: 60,
   },
-  buttonText: {
+  button_text: {
     width: "auto",
     marginLeft: "4%",
   },

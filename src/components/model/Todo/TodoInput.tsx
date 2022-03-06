@@ -20,8 +20,8 @@ export const TodoInput: FC = memo(() => {
   const onBlur = useCallback(() => setIsFocused(false), []);
 
   return (
-    <View style={[style.inputAccessoryArea, { shadowColor }]} bg="bg1">
-      <View style={style.inputBg}>
+    <View style={[style.input_accessory_area, { shadowColor }]} bg="bg1">
+      <View style={style.input_bg}>
         <TextInput
           ref={inputRef}
           value={value}
@@ -34,31 +34,31 @@ export const TodoInput: FC = memo(() => {
       </View>
 
       {isFocused || value ? (
-        <View style={style.flexRow} bg="bg1">
+        <View style={style.flex_row} bg="bg1">
           <Button
             leftIcon={<EntypoIcon name="plus" icon="white" size={16} />}
             label="今日する"
-            outlineStyle={style.buttonOutline}
-            viewStyle={style.buttonBg}
-            textStyle={style.buttonText}
+            outlineStyle={style.button_outline}
+            viewStyle={style.button_bg}
+            textStyle={style.button_text}
             bg="primary"
             color="white"
           />
           <Button
             leftIcon={<EntypoIcon name="plus" icon="white" size={16} />}
             label="明日する"
-            outlineStyle={style.buttonOutline}
-            viewStyle={style.buttonBg}
-            textStyle={style.buttonText}
+            outlineStyle={style.button_outline}
+            viewStyle={style.button_bg}
+            textStyle={style.button_text}
             bg="secondary"
             color="white"
           />
           <Button
             leftIcon={<EntypoIcon name="plus" icon="white" size={16} />}
             label="今度する"
-            outlineStyle={style.buttonOutline}
-            viewStyle={style.buttonBg}
-            textStyle={style.buttonText}
+            outlineStyle={style.button_outline}
+            viewStyle={style.button_bg}
+            textStyle={style.button_text}
             bg="tertiary"
             color="white"
           />
@@ -70,7 +70,7 @@ export const TodoInput: FC = memo(() => {
 
 const style = StyleSheet.create({
   // keyboard
-  inputAccessoryArea: {
+  input_accessory_area: {
     paddingTop: "3%",
 
     // shadow
@@ -78,23 +78,23 @@ const style = StyleSheet.create({
     shadowOpacity: 0.05,
     elevation: 1,
   },
-  inputBg: {
+  input_bg: {
     paddingBottom: "3%",
     paddingHorizontal: "3%",
   },
-  flexRow: {
+  flex_row: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: "3%",
     paddingBottom: "3%",
   },
-  buttonOutline: {
+  button_outline: {
     width: "32%",
   },
-  buttonBg: {
+  button_bg: {
     paddingVertical: 10,
   },
-  buttonText: {
+  button_text: {
     fontSize: 14,
     width: "auto",
     marginLeft: "4%",

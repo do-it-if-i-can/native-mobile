@@ -67,17 +67,17 @@ export const Profile: FC<ProfileScreenProps> = () => {
       <View style={style.container} bg="bg1">
         <Button
           label="サインアウト"
-          outlineStyle={style.buttonOutline}
-          viewStyle={style.buttonBg}
-          textStyle={style.buttonText}
+          outlineStyle={style.button_outline}
+          viewStyle={style.button_bg}
+          textStyle={style.button_text}
           isBorder
           onPress={onPress}
         />
         <Button
           label="モーダルOPEN"
-          outlineStyle={style.buttonOutline}
-          viewStyle={style.buttonBg}
-          textStyle={style.buttonText}
+          outlineStyle={style.button_outline}
+          viewStyle={style.button_bg}
+          textStyle={style.button_text}
           isBorder
           onPress={onOpenModal}
         />
@@ -90,15 +90,15 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
   },
-  buttonOutline: {
+  button_outline: {
     flex: 1,
     alignItems: "flex-end",
   },
-  buttonBg: {
+  button_bg: {
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
-  buttonText: {
+  button_text: {
     fontSize: 12,
   },
 });
