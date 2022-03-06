@@ -49,16 +49,10 @@ module.exports = {
     "comma-dangle": "off",
     "no-undef": "warn",
     "no-console": ["warn", { allow: ["warn", "info", "error"] }],
-    "no-restricted-syntax": [
-      "error",
-      { selector: "TSEnumDeclaration", message: "Don't declare enums" },
-    ],
+    "no-restricted-syntax": ["error", { selector: "TSEnumDeclaration", message: "Don't declare enums" }],
     "prefer-arrow-callback": "error",
     "prefer-const": "error",
-    "func-style": [
-      "error",
-      "expression",
-    ],
+    "func-style": ["error", "expression"],
     "no-use-before-define": ["off", { paths: [{ name: "react", importNames: ["default"] }] }],
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
@@ -72,7 +66,10 @@ module.exports = {
         checkInlineFunction: true,
       },
     ],
-    "react/destructuring-assignment": ["error", "never"],
+
+    // propsを展開したい時があるのでコメントアウト
+    // "react/destructuring-assignment": ["error", "never"],
+
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "import/newline-after-import": "error",
@@ -89,8 +86,8 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
-        varsIgnorePattern: "^_", 
-        argsIgnorePattern: "^_", 
+        varsIgnorePattern: "^_",
+        argsIgnorePattern: "^_",
       },
     ],
     "jsx-a11y/no-autofocus": "off",
