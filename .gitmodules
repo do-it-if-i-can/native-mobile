@@ -1,0 +1,3 @@
+[submodule "graphql"]
+	path = graphql
+	url = https://github.com/do-it-if-i-can/graphql.git
