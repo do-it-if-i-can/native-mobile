@@ -12,7 +12,10 @@ export const TodoInput: FC = memo(() => {
   const inputRef = useRef(null);
   const shadowColor = useThemeColor({}, "color1");
 
+  const [value, setValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+
+  const onChangeText = useCallback((text) => setValue(text), []);
   const onFocus = useCallback(() => setIsFocused(true), []);
   const onBlur = useCallback(() => setIsFocused(false), []);
 
@@ -21,6 +24,8 @@ export const TodoInput: FC = memo(() => {
       <View style={style.inputBg}>
         <TextInput
           ref={inputRef}
+          value={value}
+          onChangeText={onChangeText}
           isFocused={isFocused}
           onFocus={onFocus}
           onBlur={onBlur}
@@ -28,7 +33,7 @@ export const TodoInput: FC = memo(() => {
         />
       </View>
 
-      {isFocused ? (
+      {isFocused || value ? (
         <View style={style.flexRow} bg="bg1">
           <Button
             leftIcon={<EntypoIcon name="plus" icon="white" size={16} />}
