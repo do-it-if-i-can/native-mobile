@@ -1,10 +1,10 @@
-import type { FC, ReactNode } from 'react';
-import React, { memo } from 'react';
-import { StyleSheet } from 'react-native';
+import type { FC, ReactNode } from "react";
+import React, { memo } from "react";
+import { StyleSheet } from "react-native";
 
-import { BounceableView, TouchableOpacity } from '~/components/ui/View';
-import { useThemeColor } from '~/hooks/useThemeColor';
-import type { StyleProps } from '~/types/style';
+import { BounceableView, TouchableOpacity } from "~/components/ui/View";
+import { useThemeColor } from "~/hooks/useThemeColor";
+import type { StyleProps } from "~/types/style";
 
 export type CardProps = StyleProps & {
   children: ReactNode;
@@ -20,7 +20,7 @@ export const Card: FC<CardProps> = memo(
     lightBg,
     darkBg,
     // custom theme
-    bg = 'bg1',
+    bg = "bg1",
     // ViewProps
     isBorder,
     outlineStyle,
@@ -30,7 +30,7 @@ export const Card: FC<CardProps> = memo(
     children,
     onPress,
   }) => {
-    const borderColor = useThemeColor({}, isBorder ? 'border' : bg);
+    const borderColor = useThemeColor({}, isBorder ? "border" : bg);
 
     return (
       <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
@@ -47,7 +47,7 @@ export const Card: FC<CardProps> = memo(
 
 const defaultStyle = StyleSheet.create({
   outline: {
-    marginBottom: '6%',
+    marginBottom: "6%",
   },
   bg: {
     borderRadius: 20,
@@ -56,7 +56,7 @@ const defaultStyle = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    shadowColor: '#888888',
+    shadowColor: "#888888",
     shadowOpacity: 0.4,
     elevation: 1,
   },

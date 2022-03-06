@@ -1,22 +1,15 @@
 // inlin style permission
 /* eslint-disable react-native/no-inline-styles */
 
-import type { FC } from 'react';
-import React, { useCallback, useEffect, useRef } from 'react';
-import { useToaster } from 'react-hot-toast/src/core/use-toaster';
-import { Animated } from 'react-native';
+import type { FC } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
+import { useToaster } from "react-hot-toast/src/core/use-toaster";
+import { Animated } from "react-native";
 
-import { Text } from '~/components/ui/Text';
-import { View } from '~/components/ui/View';
+import { Text } from "~/components/ui/Text";
+import { View } from "~/components/ui/View";
 
-const ToastBar = ({
-  toast,
-  updateHeight,
-  offset,
-  options: _options,
-  position: _position,
-  ..._props
-}: any) => {
+const ToastBar = ({ toast, updateHeight, offset, options: _options, position: _position, ..._props }: any) => {
   const fadeAnim = useRef(new Animated.Value(0.5)).current;
   const posAnim = useRef(new Animated.Value(-80)).current;
 
@@ -46,11 +39,11 @@ const ToastBar = ({
     <Animated.View
       pointerEvents="none"
       style={{
-        position: 'absolute',
+        position: "absolute",
         left: 0,
         right: 0,
         zIndex: toast.visible ? 9999 : undefined,
-        alignItems: 'center',
+        alignItems: "center",
         opacity: fadeAnim,
         transform: [{ translateY: posAnim }],
       }}
@@ -60,11 +53,11 @@ const ToastBar = ({
         onLayout={onLayout}
         bg="bg1"
         style={{
-          flexDirection: 'row',
-          alignItems: 'center',
+          flexDirection: "row",
+          alignItems: "center",
 
           // width: 'auto',
-          width: '90%',
+          width: "90%",
           margin: 50,
           paddingHorizontal: 20,
           paddingVertical: 15,
@@ -74,7 +67,7 @@ const ToastBar = ({
             width: 0,
             height: 1,
           },
-          shadowColor: '#888888',
+          shadowColor: "#888888",
           shadowOpacity: 0.4,
           elevation: 1,
         }}
@@ -82,7 +75,7 @@ const ToastBar = ({
         <Text
           style={{
             fontSize: 16,
-            width: 'auto',
+            width: "auto",
           }}
         >
           {toast.icon}
@@ -91,7 +84,7 @@ const ToastBar = ({
           style={{
             fontSize: 16,
             paddingLeft: 5,
-            width: 'auto',
+            width: "auto",
           }}
         >
           {toast.message}
@@ -101,17 +94,17 @@ const ToastBar = ({
   );
 };
 
-export const Toaster: FC<any> = ({ position = 'top-center', containerStyle, toastOptions }) => {
+export const Toaster: FC<any> = ({ position = "top-center", containerStyle, toastOptions }) => {
   const { toasts, handlers } = useToaster();
   return (
     <View
       style={{
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         right: 0,
         zIndex: 9999,
-        width: '100%',
+        width: "100%",
         ...containerStyle,
       }}
     >

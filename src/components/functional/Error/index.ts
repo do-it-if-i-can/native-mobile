@@ -1,1 +1,1 @@
-export { LayoutErrorBoundary } from './LayoutErrorBoundary';
+export { LayoutErrorBoundary } from "./LayoutErrorBoundary";

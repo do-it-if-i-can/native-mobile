@@ -1,1 +1,1 @@
-export { ProfileEditModal } from './ProfileEdit.modal';
+export { ProfileEditModal } from "./ProfileEdit.modal";

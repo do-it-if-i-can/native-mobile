@@ -1,13 +1,13 @@
-import type { FC, ReactNode } from 'react';
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import type { BounceableProps } from 'rn-bounceable';
-import { Bounceable as NativeBounceable } from 'rn-bounceable';
+import type { FC, ReactNode } from "react";
+import React from "react";
+import { StyleSheet } from "react-native";
+import type { BounceableProps } from "rn-bounceable";
+import { Bounceable as NativeBounceable } from "rn-bounceable";
 
-import { useThemeColor } from '~/hooks/useThemeColor';
-import type { CustomViewStyleProps } from '~/types/style';
+import { useThemeColor } from "~/hooks/useThemeColor";
+import type { CustomViewStyleProps } from "~/types/style";
 
-type Props = Omit<BounceableProps, 'contentContainerStyle'> &
+type Props = Omit<BounceableProps, "contentContainerStyle"> &
   CustomViewStyleProps & {
     children: ReactNode;
   };
@@ -18,7 +18,7 @@ export const BounceableView: FC<Props> = ({
   lightBg: light,
   darkBg: dark,
   // custom theme
-  bg = 'bg0',
+  bg = "bg0",
   // ViewProps
   viewStyle,
   ...otherProps
@@ -36,6 +36,6 @@ export const BounceableView: FC<Props> = ({
 
 const defaultStyle = StyleSheet.create({
   bg: {
-    width: '100%',
+    width: "100%",
   },
 });
