@@ -1,9 +1,9 @@
 import type { FC, ReactNode } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import Modal from "react-native-modal";
 
 import { View } from "~/components/ui/View";
-import { useThemeColor } from "~/hooks/useThemeColor";
 
 type Props = {
   children: ReactNode;
@@ -13,8 +13,6 @@ type Props = {
 };
 
 export const HalfModal: FC<Props> = ({ children, size = 0.7, isVisible, onCloseModal }) => {
-  const backdropColor = useThemeColor({}, "primary");
-
   return (
     <Modal
       isVisible={isVisible}
@@ -26,7 +24,6 @@ export const HalfModal: FC<Props> = ({ children, size = 0.7, isVisible, onCloseM
       onSwipeComplete={onCloseModal}
       onBackdropPress={onCloseModal}
       style={defaultStyle.modal}
-      backdropColor={backdropColor}
     >
       <View style={[defaultStyle.content, { flex: size }]} bg="bg1">
         <View style={defaultStyle.handle_wrap}>
