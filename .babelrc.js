@@ -17,10 +17,11 @@ module.exports = {
       {
         root: ["./"],
         alias: {
-          "assets": "./assets",
+          assets: "./assets",
           "~": "./src/",
         },
       },
     ],
+    "react-native-reanimated/plugin",
   ],
 };
