@@ -3,7 +3,6 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { Toaster } from "~/components/ui/Toaster";
 import { useCachedResources } from "~/hooks/useCachedResources";
 import { useColorScheme } from "~/hooks/useColorScheme";
 import { Navigation } from "~/screens";
@@ -23,7 +22,6 @@ const App = () => {
           <Navigation colorScheme={colorScheme} />
           <StatusBar />
         </SafeAreaProvider>
-        <Toaster position="bottom-center" />
       </>
       // </ApolloProvider>
     );
