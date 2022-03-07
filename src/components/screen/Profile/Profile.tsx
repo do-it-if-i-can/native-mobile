@@ -1,25 +1,19 @@
 import type { FC } from "react";
-import React, { useCallback, useState } from "react";
+import React from "react";
 // import { toast } from 'react-hot-toast/src/core/toast';
 import { StyleSheet } from "react-native";
 
 import { Button } from "~/components/ui/Button";
+import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
 import { toastKit } from "~/utils/toastKit";
 
-import { ProfileEditModal } from "./modal";
 import type { ProfileScreenProps } from "./ScreenProps";
 
-export const Profile: FC<ProfileScreenProps> = () => {
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  const onCloseModal = useCallback(() => {
-    setModalVisible(false);
-  }, []);
-
-  const onOpenModal = useCallback(() => {
-    setModalVisible(true);
-  }, []);
+export const Profile: FC<ProfileScreenProps> = ({ navigation }) => {
+  const onNavigateSetting = () => {
+    navigation.goBack();
+  };
 
   const onPress = async () => {
     const { errorToast, successToast } = toastKit();
@@ -61,44 +55,25 @@ export const Profile: FC<ProfileScreenProps> = () => {
   // };
 
   return (
-    <>
-      <ProfileEditModal isVisible={isModalVisible} onCloseModal={onCloseModal} />
-
-      <View style={style.container} bg="bg1">
-        <Button
-          label="サインアウト"
-          outlineStyle={style.button_outline}
-          viewStyle={style.button_bg}
-          textStyle={style.button_text}
-          isBorder
-          onPress={onPress}
-        />
-        <Button
-          label="モーダルOPEN"
-          outlineStyle={style.button_outline}
-          viewStyle={style.button_bg}
-          textStyle={style.button_text}
-          isBorder
-          onPress={onOpenModal}
-        />
-      </View>
-    </>
+    <View style={style.container}>
+      <Text style={style.title}>アカウント設定</Text>
+      <Button label="react-hot-toast" bg="danger" color="white" onPress={onPress} />
+      <Button label="go back" isBorder onPress={onNavigateSetting} />
+    </View>
   );
 };
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "3%",
   },
-  button_outline: {
-    flex: 1,
-    alignItems: "flex-end",
-  },
-  button_bg: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-  },
-  button_text: {
-    fontSize: 12,
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: "5%",
   },
 });

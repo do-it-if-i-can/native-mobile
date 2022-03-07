@@ -1,3 +1,3 @@
-import type { StackScreenProps as Props } from "~/types";
+import type { SettingScreenProps as Props } from "~/types";
 
 export type ProfileScreenProps = Props<"ProfileScreen">;
