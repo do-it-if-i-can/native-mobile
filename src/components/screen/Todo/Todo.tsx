@@ -24,23 +24,23 @@ export const Todo: FC<TodoScreenProps> = ({ navigation }) => {
         今日する
       </Text>
       <TodoAddButton />
-      <TodoItem status="TODAY" title="React勉強（編集中）" isEdit />
-      <TodoItem status="TODAY" title="React勉強" />
+      <TodoItem id={1} status="TODAY" title="React勉強（編集中）" isEdit />
+      <TodoItem id={2} status="TODAY" title="React勉強" />
 
       <Text style={style.status_label} color="secondary">
         明日する
       </Text>
       <TodoAddButton />
-      <TodoItem status="TOMORROW" title="React勉強" />
-      <TodoItem status="TOMORROW" title="React勉強" />
-      <TodoItem status="TOMORROW" title="React勉強" />
+      <TodoItem id={3} status="TOMORROW" title="React勉強" />
+      <TodoItem id={4} status="TOMORROW" title="React勉強" />
+      <TodoItem id={5} status="TOMORROW" title="React勉強" />
 
       <Text style={style.status_label} color="tertiary">
         今度する
       </Text>
       <TodoAddButton />
-      <TodoItem status="SOMEDAY" title="React勉強" />
-      <TodoItem status="SOMEDAY" title="React勉強" />
+      <TodoItem id={6} status="SOMEDAY" title="React勉強" />
+      <TodoItem id={7} status="SOMEDAY" title="React勉強" />
     </View>
   );
 };
