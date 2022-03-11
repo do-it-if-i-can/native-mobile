@@ -81,31 +81,24 @@ export const DnDSample: FC<TodoScreenProps> = () => {
   const [groups, setGroups] = useState(SAMPLE_DATA);
 
   return (
-    <View style={style.container}>
-      <NestedDND
-        groups={groups}
-        updateGroups={setGroups}
-        groupToItemsKey={groupToItemsKey}
-        groupKeyExtractor={keyExtractor}
-        itemKeyExtractor={keyExtractor}
-        ghostStyle={style.ghostStyle}
-        movedWrapStyle={style.movingStyle}
-        renderItem={RenderItem}
-        renderGroupHeader={RenderGroupHeader}
-        renderBottomView={RenderHeader()}
-        headerViewHeight={headerHeight}
-        bottomViewHeight={headerHeight}
-      />
-    </View>
+    <NestedDND
+      groups={groups}
+      updateGroups={setGroups}
+      groupToItemsKey={groupToItemsKey}
+      groupKeyExtractor={keyExtractor}
+      itemKeyExtractor={keyExtractor}
+      ghostStyle={style.ghostStyle}
+      movedWrapStyle={style.movingStyle}
+      renderItem={RenderItem}
+      renderGroupHeader={RenderGroupHeader}
+      renderBottomView={RenderHeader()}
+      headerViewHeight={headerHeight}
+      bottomViewHeight={headerHeight}
+    />
   );
 };
 
 const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingBottom: 50,
-    flexDirection: "column",
-  },
   item_wrap: {
     paddingHorizontal: "3%",
     width: Dimensions.get("window").width,
