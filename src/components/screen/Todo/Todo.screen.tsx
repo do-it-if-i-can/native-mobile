@@ -13,7 +13,7 @@ import type { TodoScreenProps } from "./ScreenProps";
 export const TodoScreen: FC<TodoScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout safeArea="horizontal" bg="bg1">
+      <Layout safeArea="bottom-horizontal" bg="bg1">
         <KeyboardAvoiding>
           <DnDSample {...props} />
         </KeyboardAvoiding>
