@@ -1,53 +1,51 @@
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import type { FC, ReactNode } from "react";
 import React, { useMemo } from "react";
 import { StyleSheet } from "react-native";
 
-import { SafeAreaView, View } from "~/components/ui/View";
+import { SafeAreaView } from "~/components/ui/View";
 import type { CustomViewStyleProps } from "~/types/style";
 
 type LayoutProps = CustomViewStyleProps & {
   children: ReactNode;
-  layout: "tabheader-bottomtab" | "header-bottomtab" | "headerless-bottomtab";
+  isCenter?: true;
+  safeArea?: "top-horizontal" | "bottom-horizontal" | "horizontal";
 };
 
 type Edges = ("top" | "bottom" | "left" | "right")[];
 
 export const Layout: FC<LayoutProps> = ({
-  // 基本的に使用しない
+  // theme
+  bg = "bg1",
   lightBg,
   darkBg,
-  // custom theme
-  bg = "bg1",
-  // ViewProps
-  viewStyle,
-  layout,
+  // LayoutProps
+  isCenter = false,
+  safeArea,
   children,
 }) => {
-  const tabBarHeight = useBottomTabBarHeight();
-
   const edges: Edges = useMemo(() => {
-    switch (layout) {
-      case "tabheader-bottomtab":
+    switch (safeArea) {
+      case "top-horizontal":
         return ["top", "left", "right"];
-      case "header-bottomtab":
+      case "bottom-horizontal":
+        return ["bottom", "left", "right"];
+      case "horizontal":
         return ["left", "right"];
-      case "headerless-bottomtab":
-        return ["top", "left", "right"];
       default:
         return ["top", "bottom", "left", "right"];
     }
-  }, [layout]);
+  }, [safeArea]);
 
   return (
-    <SafeAreaView {...{ edges, lightBg, darkBg, bg, viewStyle }}>
-      <View style={[defaultStyle.root, { marginBottom: tabBarHeight || 0 }]}>{children}</View>
+    <SafeAreaView {...{ edges, bg, lightBg, darkBg }} style={[isCenter && style.center]}>
+      {children}
     </SafeAreaView>
   );
 };
 
-const defaultStyle = StyleSheet.create({
-  root: {
-    flex: 1,
+const style = StyleSheet.create({
+  center: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

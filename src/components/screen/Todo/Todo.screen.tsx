@@ -5,7 +5,7 @@ import { InputAccessoryView } from "react-native";
 import { LayoutErrorBoundary } from "~/components/functional/Error";
 import { KeyboardAvoiding } from "~/components/functional/KeyboardAvoiding";
 import { TodoInput } from "~/components/model/todo/TodoInput";
-import { SafeAreaLayout } from "~/components/ui/Layout";
+import { Layout } from "~/components/ui/Layout";
 
 import { DnDSample } from "./DnDSample";
 import type { TodoScreenProps } from "./ScreenProps";
@@ -13,7 +13,7 @@ import type { TodoScreenProps } from "./ScreenProps";
 export const TodoScreen: FC<TodoScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <SafeAreaLayout bg="bg1">
+      <Layout safeArea="horizontal" bg="bg1">
         <KeyboardAvoiding>
           <DnDSample {...props} />
         </KeyboardAvoiding>
@@ -21,7 +21,7 @@ export const TodoScreen: FC<TodoScreenProps> = (props) => {
         <InputAccessoryView>
           <TodoInput />
         </InputAccessoryView>
-      </SafeAreaLayout>
+      </Layout>
     </LayoutErrorBoundary>
   );
 };
