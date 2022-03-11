@@ -7,8 +7,8 @@ export const bgTheme = {
   },
   dark: {
     bg0: "#00000000",
-    bg1: "#373c3f", // 未定
-    bg2: "#373c3f", // 未定
-    edit: "#FBBF2410", // 未定
+    bg1: "#27272a", // 未定
+    bg2: "#3f3f45", // 未定
+    edit: "#7c5f1610", // 未定
   },
 } as const;
