@@ -2,7 +2,41 @@
 
 ## 開発環境
 
+1. clone する
+
+   ```shell
+   git clone https://github.com/do-it-if-i-can/native-mobile.git
+   ```
+
+1. パッケージのインストール
+
+   ```shell
+   yarn
+   ```
+
+1. アプリ起動
+
+   ```shell
+   yarn start
+   ```
+
 ## 技術選定
+
+- TypeScript
+- React Native
+- Expo
+- React Navigation
+- React Hot Toast
+- Auth0
+- Recoil
+- GraphQL
+- GraphQL Code Generator
+- Apollo client
+- Husky
+- ESLint
+- Prettier
+- React Error Boundary
+- React Native Reanimated
 
 ## アーキテクチャ
 
@@ -57,7 +91,7 @@
 > 参考記事：https://zenn.dev/yoshiko/articles/99f8047555f700
 
 - 🗂 src
-  - 🗂 compoennts
+  - 🗂 components
     - 🗂 screen
       - 🗂 modal
         - 🗂 XzzXzz
@@ -115,16 +149,16 @@
     - useXzzXzz.ts
   - 🗂 screens
     - 🗂 auth
-      - zzz_zzz.screeen.tsx
-      - zzz_zzz.screeen.tsx
+      - zzz_zzz.screen.tsx
+      - zzz_zzz.screen.tsx
       - index.tsx（auth 内の navigation 定義）
     - 🗂 main
       - 🗂 sub
-        - zzz_zzz.screeen.tsx
-        - zzz_zzz.screeen.tsx
+        - zzz_zzz.screen.tsx
+        - zzz_zzz.screen.tsx
         - index.tsx（sub 内の navigation 定義）
       - zzz_zzz.modal.tsx
-      - zzz_zzz.screeen.tsx
+      - zzz_zzz.screen.tsx
       - index.tsx（main 内の navigation 定義）
     - index.tsx
     - 404.screen.tsx
