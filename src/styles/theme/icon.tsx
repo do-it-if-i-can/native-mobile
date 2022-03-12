@@ -4,7 +4,7 @@ export const iconTheme = {
     icon2: "#070417",
   },
   dark: {
-    icon1: "#ffffff", // 未定
+    icon1: "#A1A1AA", // 未定
     icon2: "#ffffff", // 未定
   },
 } as const;
