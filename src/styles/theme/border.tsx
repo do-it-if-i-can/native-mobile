@@ -3,6 +3,6 @@ export const borderTheme = {
     border: "#C2C6D2",
   },
   dark: {
-    border: "#ffffff", // 未定
+    border: "#A1A1AA", // 未定
   },
 } as const;

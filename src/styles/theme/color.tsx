@@ -5,8 +5,8 @@ export const colorTheme = {
     color2: "#C2C6D2",
   },
   dark: {
-    color0: "#404852", // bg1と同じ
-    color1: "#ffffff", // 未定
-    color2: "#ffffff", // 未定
+    color0: "#27272a", // bg1と同じ
+    color1: "#FFFFFF", // 未定
+    color2: "#A1A1AA", // 未定
   },
 } as const;

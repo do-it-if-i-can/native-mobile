@@ -24,7 +24,10 @@ export const SignIn: FC<SignInScreenProps> = () => {
         outlineStyle={style.button_outline}
         viewStyle={style.button_bg}
         textStyle={style.button_text}
-        bg="bg1"
+        lightBg="#FFF"
+        lightColor="#0c0c0c"
+        darkBg="#FFF"
+        darkColor="#0c0c0c"
         onPress={onSignIn}
       />
 
@@ -34,8 +37,10 @@ export const SignIn: FC<SignInScreenProps> = () => {
         outlineStyle={style.button_outline}
         viewStyle={style.button_bg}
         textStyle={style.button_text}
-        lightBg="#333333"
+        lightBg="#000000"
         lightColor="#FFF"
+        darkBg="#000000"
+        darkColor="#FFF"
         onPress={onSignIn}
       />
     </View>
