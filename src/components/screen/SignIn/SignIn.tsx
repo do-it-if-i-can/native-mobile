@@ -1,8 +1,8 @@
-/* eslint-disable react/jsx-handler-names */
-import * as AuthSession from "expo-auth-session";
+import type { AuthError, AuthSessionResult, TokenResponse } from "expo-auth-session";
+import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 import jwtDecode from "jwt-decode";
 import type { FC } from "react";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Alert, Platform, StyleSheet } from "react-native";
 
 import { Button } from "~/components/ui/Button";
@@ -14,14 +14,43 @@ import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from "~/constants/ENV";
 import type { SignInScreenProps } from "./ScreenProps";
 
 const useProxy = Platform.select({ web: false, default: true });
-const redirectUri = AuthSession.makeRedirectUri({ useProxy });
-console.info(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
-console.info(`Redirect URL: ${redirectUri}`);
+const redirectUri = makeRedirectUri({ useProxy });
+// console.info(`Redirect URL: ${redirectUri}`);
+
+type AuthSessionExecutedResult = {
+  type: "error" | "success";
+  errorCode: string | null;
+  error?: AuthError | null;
+  params: {
+    [key: string]: string;
+  };
+  authentication: TokenResponse | null;
+  url: string;
+};
+
+type Auth0User = {
+  aud: string;
+  exp: number;
+  family_name: string;
+  given_name: string;
+  iat: number;
+  iss: string;
+  locale: string;
+  name: string;
+  nickname: string;
+  picture: string;
+  sub: string;
+  updated_at: string;
+};
+
+const isAuthRequestExecuted = (result: AuthSessionResult): result is AuthSessionExecutedResult => {
+  return result.type in ["success", "error"];
+};
 
 export const SignIn: FC<SignInScreenProps> = () => {
-  const [name, setName] = useState(null);
+  const [name, setName] = useState<Auth0User | null>(null);
 
-  const [request, result, promptAsync] = AuthSession.useAuthRequest(
+  const [_request, result, promptAsync] = useAuthRequest(
     {
       redirectUri,
       clientId: AUTH0_CLIENT_ID,
@@ -32,26 +61,31 @@ export const SignIn: FC<SignInScreenProps> = () => {
       },
     },
     { authorizationEndpoint: AUTH0_DOMAIN },
-  ) as any;
+  );
+
+  const onSignIn = useCallback(() => {
+    promptAsync({ useProxy });
+  }, [promptAsync]);
+
+  const onNameNull = useCallback(() => {
+    setName(null);
+  }, []);
 
   useEffect(() => {
-    if (result) {
+    if (result && isAuthRequestExecuted(result)) {
       if (result?.error) {
         Alert.alert("Authentication error", result?.params.error_description || "something went wrong");
         return;
       }
+
       if (result.type === "success") {
         // Retrieve the JWT token and decode it
         const jwtToken = result.params.id_token;
-        const decoded = jwtDecode(jwtToken);
-
-        const { name } = decoded as any;
-        setName(name);
+        const decoded = jwtDecode<Auth0User>(jwtToken);
+        setName(decoded);
       }
     }
   }, [result]);
-
-  console.info(name, request);
 
   return (
     <View style={style.container}>
@@ -68,15 +102,7 @@ export const SignIn: FC<SignInScreenProps> = () => {
         viewStyle={style.button_bg}
         textStyle={style.button_text}
         bg="bg1"
-        onPress={() => promptAsync({ useProxy })}
-      />
-
-      <Button
-        label="Log out"
-        outlineStyle={style.button_outline}
-        viewStyle={style.button_bg}
-        textStyle={style.button_text}
-        onPress={() => setName(null)}
+        onPress={onSignIn}
       />
 
       <Button
@@ -87,6 +113,7 @@ export const SignIn: FC<SignInScreenProps> = () => {
         textStyle={style.button_text}
         lightBg="#333333"
         lightColor="#FFF"
+        onPress={onNameNull}
       />
     </View>
   );
