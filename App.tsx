@@ -2,6 +2,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { RecoilRoot } from "recoil";
 
 import { useCachedResources } from "~/hooks/useCachedResources";
 import { useColorScheme } from "~/hooks/useColorScheme";
@@ -17,12 +18,12 @@ const App = () => {
   } else {
     return (
       // <ApolloProvider client={apolloClient}>
-      <>
+      <RecoilRoot>
         <SafeAreaProvider>
           <Navigation colorScheme={colorScheme} />
           <StatusBar />
         </SafeAreaProvider>
-      </>
+      </RecoilRoot>
       // </ApolloProvider>
     );
   }
