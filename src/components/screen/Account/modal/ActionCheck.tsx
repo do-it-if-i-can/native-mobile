@@ -8,7 +8,7 @@ import { View } from "~/components/ui/View";
 
 import type { ModalProps } from "./ModalProps";
 
-export const ActionCheck: FC<ModalProps> = ({ isDelete = false, onCloseModal }) => {
+export const ActionCheck: FC<ModalProps> = ({ isDelete = false, onCloseModal, onModalAction }) => {
   return (
     <View style={style.container}>
       <Text style={style.title}>{isDelete ? "アカウントの削除" : "ログアウト"}</Text>
@@ -33,6 +33,7 @@ export const ActionCheck: FC<ModalProps> = ({ isDelete = false, onCloseModal }) 
           outlineStyle={style.button_outline}
           viewStyle={style.button_bg}
           textStyle={style.button_text}
+          onPress={onModalAction}
         />
       </View>
     </View>
