@@ -1,2 +1,5 @@
-export type { ThemeScreenProps } from "./ScreenProps";
-export { ThemeScreen } from "./Theme.screen";
+import type { SettingScreenProps as Props } from "~/types";
+
+export type ThemeScreenProps = Props<"ThemeScreen">;
+
+export { Theme } from "./Theme";

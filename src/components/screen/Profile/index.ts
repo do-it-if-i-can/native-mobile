@@ -1,2 +1,5 @@
-export { ProfileScreen } from "./Profile.screen";
-export type { ProfileScreenProps } from "./ScreenProps";
+import type { SettingScreenProps as Props } from "~/types";
+
+export { Profile } from "./Profile";
+
+export type ProfileScreenProps = Props<"ProfileScreen">;

@@ -12,30 +12,21 @@ type Props = IconThemeProps & {
   isFloating?: true;
 };
 
-export const GoBackButton: FC<Props> = memo(
-  ({
-    // 基本的に使用しない
-    // custom themeで色を指定する
-    lightIcon,
-    darkIcon,
-    // custom theme
-    icon = "icon1",
-    isFloating,
-  }) => {
-    const iconColor = useThemeColor({ light: lightIcon, dark: darkIcon }, icon);
-    const navigation = useNavigation();
+export const GoBackButton: FC<Props> = memo((props) => {
+  const { icon = "icon1", lightIcon, darkIcon, isFloating } = props;
+  const iconColor = useThemeColor({ light: lightIcon, dark: darkIcon }, icon);
+  const navigation = useNavigation();
 
-    const onGoBack = useCallback(() => {
-      navigation.goBack();
-    }, [navigation]);
+  const onGoBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
-    return (
-      <BounceableView viewStyle={[style.button, isFloating && style.float]} activeScale={0.9} onPress={onGoBack}>
-        <MaterialIcons name="keyboard-arrow-left" size={40} color={iconColor} />
-      </BounceableView>
-    );
-  },
-);
+  return (
+    <BounceableView viewStyle={[style.button, isFloating && style.float]} activeScale={0.9} onPress={onGoBack}>
+      <MaterialIcons name="keyboard-arrow-left" size={40} color={iconColor} />
+    </BounceableView>
+  );
+});
 
 const style = StyleSheet.create({
   button: {

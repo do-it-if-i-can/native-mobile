@@ -7,11 +7,11 @@ import { TodoItem } from "~/components/model/todo/TodoItem";
 import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
 
-import type { TodoScreenProps } from "./ScreenProps";
+import type { TodoScreenProps } from ".";
 
-export const Todo: FC<TodoScreenProps> = ({ navigation }) => {
+export const Todo: FC<TodoScreenProps> = (props) => {
   const onPushSetting = () => {
-    navigation.navigate("SettingNavigator");
+    props.navigation.navigate("SettingNavigator");
   };
 
   return (

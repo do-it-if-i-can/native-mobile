@@ -7,9 +7,9 @@ import { Button } from "~/components/ui/Button";
 import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
 
-import type { AccountScreenProps } from "./ScreenProps";
+import type { AccountScreenProps } from ".";
 
-export const Account: FC<AccountScreenProps> = ({ navigation }) => {
+export const Account: FC<AccountScreenProps> = (props) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const onCloseModal = useCallback(() => {
@@ -17,7 +17,7 @@ export const Account: FC<AccountScreenProps> = ({ navigation }) => {
   }, []);
 
   const onPushSetting = () => {
-    navigation.goBack();
+    props.navigation.goBack();
   };
 
   const onOpenModal = useCallback(() => {

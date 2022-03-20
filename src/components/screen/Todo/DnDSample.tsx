@@ -7,7 +7,7 @@ import { TodoItem } from "~/components/model/todo/TodoItem";
 import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
 
-import type { TodoScreenProps } from "./ScreenProps";
+import type { TodoScreenProps } from ".";
 
 const SAMPLE_DATA = [
   {

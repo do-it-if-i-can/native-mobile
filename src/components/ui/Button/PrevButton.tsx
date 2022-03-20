@@ -11,12 +11,12 @@ type PrevProps = StackScreenProps<keyof RootStackParamList> & {
   screen: "TodoScreen";
 };
 
-export const PrevButton: VFC<PrevProps> = ({ screen, navigation }) => {
+export const PrevButton: VFC<PrevProps> = (props) => {
   const icon = useThemeColor({}, "icon2");
 
   const onPrevScreen = useCallback(() => {
-    navigation.navigate(screen);
-  }, [navigation, screen]);
+    props.navigation.navigate(props.screen);
+  }, [props.navigation, props.screen]);
 
   return (
     <BounceableView viewStyle={[defaultStyle.button]} activeScale={0.9} onPress={onPrevScreen}>

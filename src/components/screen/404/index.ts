@@ -1,2 +1,5 @@
-export { NotFoundScreen } from "./404.screen";
-export type { NotFoundScreenProps } from "./ScreenProps";
+import type { StackScreenProps as Props } from "~/types";
+
+export { NotFound } from "./404";
+
+export type NotFoundScreenProps = Props<"NotFoundScreen">;

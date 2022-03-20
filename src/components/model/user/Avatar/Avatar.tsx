@@ -11,10 +11,10 @@ type Props = {
   onPress?: () => void;
 };
 
-export const Avatar: FC<Props> = ({ source, onPress }) => {
+export const Avatar: FC<Props> = (props) => {
   return (
-    <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
-      {source ? <Image source={source} /> : <DummyAvatar size={40} />}
+    <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
+      {props.source ? <Image source={props.source} /> : <DummyAvatar size={40} />}
     </TouchableOpacity>
   );
 };

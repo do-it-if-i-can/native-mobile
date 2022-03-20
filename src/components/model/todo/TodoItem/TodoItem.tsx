@@ -12,11 +12,11 @@ type Props = {
   isEdit?: true;
 };
 
-export const TodoItem: FC<Props> = memo(({ status, title, isEdit }) => {
+export const TodoItem: FC<Props> = memo((props) => {
   const [radio, onChangeValue] = useState(false);
 
   const RadioTheme = useMemo(() => {
-    switch (status) {
+    switch (props.status) {
       case "TODAY":
         return "primary";
       case "TOMORROW":
@@ -24,17 +24,17 @@ export const TodoItem: FC<Props> = memo(({ status, title, isEdit }) => {
       case "SOMEDAY":
         return "tertiary";
     }
-  }, [status]);
+  }, [props.status]);
 
   return (
-    <View style={style.container} bg={isEdit ? "edit" : "bg0"}>
+    <View style={style.container} bg={props.isEdit ? "edit" : "bg0"}>
       <Radio bg={RadioTheme} activeValue={radio} value={true} onChangeValue={onChangeValue} />
       <Text
         // eslint-disable-next-line react-native/no-inline-styles
         style={[style.todo_text, radio ? { textDecorationLine: "line-through" } : null]}
         color={radio ? "color2" : "color1"}
       >
-        {title}
+        {props.title}
       </Text>
     </View>
   );

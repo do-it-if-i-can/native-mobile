@@ -12,21 +12,13 @@ type Props<T> = BgThemeProps & {
   onChangeValue?: Dispatch<SetStateAction<T>>;
 };
 
-export const Radio = <T,>({
-  // 基本的に使用しない
-  // custom themeで色を指定する
-  lightBg,
-  darkBg,
-  bg = "primary",
-  value,
-  activeValue,
-  onChangeValue,
-}: Props<T>) => {
+export const Radio = <T,>(props: Props<T>) => {
+  const { bg = "primary", lightBg, darkBg, value, activeValue, onChangeValue } = props;
   const borderColor = useThemeColor({}, "border");
 
   const onPress = useCallback(() => {
     onChangeValue && onChangeValue((prev) => (prev === value ? activeValue : value));
-  }, [onChangeValue, value]);
+  }, [onChangeValue, value, activeValue]);
 
   return (
     <TouchableOpacity style={[defaultStyle.ring, { borderColor }]} activeOpacity={1} onPress={onPress}>
