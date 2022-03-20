@@ -9,21 +9,12 @@ import type { BgThemeProps } from "~/types/style";
 
 export type SafeAreaViewProps = NativeSafeAreaViewProps & BgThemeProps;
 
-export const SafeAreaView: FC<SafeAreaViewProps> = memo(
-  ({
-    // theme
-    bg = "bg0",
-    lightBg,
-    darkBg,
-    // SafeAreaViewProps
-    style,
-    ...otherProps
-  }) => {
-    const backgroundColor = useThemeColor({ light: lightBg, dark: darkBg }, bg);
+export const SafeAreaView: FC<SafeAreaViewProps> = memo((props) => {
+  const { bg = "bg0", lightBg, darkBg, style, ...otherProps } = props;
+  const backgroundColor = useThemeColor({ light: lightBg, dark: darkBg }, bg);
 
-    return <NativeSafeAreaView style={[defaultStyle.bg, style, { backgroundColor }]} {...otherProps} />;
-  },
-);
+  return <NativeSafeAreaView style={[defaultStyle.bg, style, { backgroundColor }]} {...otherProps} />;
+});
 
 const defaultStyle = StyleSheet.create({
   bg: {

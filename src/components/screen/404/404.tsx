@@ -2,9 +2,9 @@ import type { FC } from "react";
 import React, { useCallback } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import type { NotFoundScreenProps } from "./ScreenProps";
+import type { NotFoundScreenProps } from ".";
 
-export const NotFoundScreen: FC<NotFoundScreenProps> = (props) => {
+export const NotFound: FC<NotFoundScreenProps> = (props) => {
   const onRootScreenPush = useCallback(() => {
     props.navigation.replace("TodoScreen");
   }, [props.navigation]);

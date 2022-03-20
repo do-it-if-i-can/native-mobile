@@ -11,11 +11,11 @@ type Props = {
   onPress?: () => void;
 };
 
-export const Avatar: FC<Props> = ({ onPress }) => {
+export const Avatar: FC<Props> = (props) => {
   const authSession = useRecoilValue(user);
 
   return (
-    <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
       {authSession?.user ? (
         <Image source={{ uri: authSession.user.avatar }} style={style.avatar} />
       ) : (

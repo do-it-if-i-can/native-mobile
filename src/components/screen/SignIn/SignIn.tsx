@@ -6,7 +6,7 @@ import { Button } from "~/components/ui/Button";
 import { Apple, Google, QinTodo } from "~/components/ui/Icon";
 import { View } from "~/components/ui/View";
 
-import type { SignInScreenProps } from "./ScreenProps";
+import type { SignInScreenProps } from ".";
 import { useSignInAuth0 } from "./useSignInAuth0";
 
 export const SignIn: FC<SignInScreenProps> = () => {

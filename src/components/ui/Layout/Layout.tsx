@@ -13,16 +13,9 @@ type LayoutProps = CustomViewStyleProps & {
 
 type Edges = ("top" | "bottom" | "left" | "right")[];
 
-export const Layout: FC<LayoutProps> = ({
-  // theme
-  bg = "bg1",
-  lightBg,
-  darkBg,
-  // LayoutProps
-  isCenter = false,
-  safeArea,
-  children,
-}) => {
+export const Layout: FC<LayoutProps> = (props) => {
+  const { bg = "bg1", lightBg, darkBg, isCenter = false, safeArea, children } = props;
+
   const edges: Edges = useMemo(() => {
     switch (safeArea) {
       case "top-horizontal":

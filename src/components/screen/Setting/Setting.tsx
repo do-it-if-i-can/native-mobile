@@ -7,9 +7,9 @@ import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
 
 import { HalfModal } from "../Setting/modal";
-import type { SettingScreenProps } from "./ScreenProps";
+import type { SettingScreenProps } from ".";
 
-export const Setting: FC<SettingScreenProps> = ({ navigation }) => {
+export const Setting: FC<SettingScreenProps> = (props) => {
   const [isHalfModalVisible, setHalfModalVisible] = useState(false);
 
   const onCloseHalfModal = useCallback(() => {
@@ -20,19 +20,19 @@ export const Setting: FC<SettingScreenProps> = ({ navigation }) => {
   }, []);
 
   const onCloseModal = () => {
-    navigation.navigate("TodoScreen");
+    props.navigation.navigate("TodoScreen");
   };
 
   const onPushAccountScreen = () => {
-    navigation.navigate("AccountScreen");
+    props.navigation.navigate("AccountScreen");
   };
 
   const onPushProfileScreen = () => {
-    navigation.navigate("ProfileScreen");
+    props.navigation.navigate("ProfileScreen");
   };
 
   const onPushThemeScreen = () => {
-    navigation.navigate("ThemeScreen");
+    props.navigation.navigate("ThemeScreen");
   };
 
   return (

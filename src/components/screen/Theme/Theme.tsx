@@ -8,11 +8,11 @@ import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
 import { toastKit } from "~/utils/toastKit";
 
-import type { ThemeScreenProps } from "./ScreenProps";
+import type { ThemeScreenProps } from ".";
 
-export const Theme: FC<ThemeScreenProps> = ({ navigation }) => {
+export const Theme: FC<ThemeScreenProps> = (props) => {
   const onNavigateSetting = () => {
-    navigation.goBack();
+    props.navigation.goBack();
   };
 
   const onPress = async () => {

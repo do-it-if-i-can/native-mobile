@@ -12,24 +12,15 @@ type Props = Omit<BounceableProps, "contentContainerStyle"> &
     children: ReactNode;
   };
 
-export const BounceableView: FC<Props> = ({
-  // 基本的に使用しない
-  // custom themeで色を指定する
-  lightBg: light,
-  darkBg: dark,
-  // custom theme
-  bg = "bg0",
-  // ViewProps
-  viewStyle,
-  ...otherProps
-}) => {
-  const backgroundColor = useThemeColor({ light, dark }, bg);
+export const BounceableView: FC<Props> = (props) => {
+  const { bg = "bg0", lightBg, darkBg, viewStyle, activeScale = 0.97, ...otherProps } = props;
+  const backgroundColor = useThemeColor({ light: lightBg, dark: darkBg }, bg);
 
   return (
     <NativeBounceable
-      contentContainerStyle={[defaultStyle.bg, viewStyle, { backgroundColor }]}
-      activeScale={0.97}
       {...otherProps}
+      contentContainerStyle={[defaultStyle.bg, viewStyle, { backgroundColor }]}
+      activeScale={activeScale}
     />
   );
 };

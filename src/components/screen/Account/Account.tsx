@@ -11,9 +11,9 @@ import { JWT_TOKEN } from "~/constants/ENV";
 import { user } from "~/stores/user";
 import { deleteSecureStore } from "~/utils/secureStore";
 
-import type { AccountScreenProps } from "./ScreenProps";
+import type { AccountScreenProps } from ".";
 
-export const Account: FC<AccountScreenProps> = ({ navigation }) => {
+export const Account: FC<AccountScreenProps> = (props) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const setAuthUser = useSetRecoilState(user);
 
@@ -22,7 +22,7 @@ export const Account: FC<AccountScreenProps> = ({ navigation }) => {
   }, []);
 
   const onPushSetting = () => {
-    navigation.goBack();
+    props.navigation.goBack();
   };
 
   const onOpenModal = useCallback(() => {

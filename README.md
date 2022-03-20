@@ -5,7 +5,7 @@
 1. clone する
 
    ```shell
-   git clone https://github.com/do-it-if-i-can/native-mobile.git
+   git clone -b develop --recursive https://github.com/do-it-if-i-can/native-mobile.git
    ```
 
 1. パッケージのインストール

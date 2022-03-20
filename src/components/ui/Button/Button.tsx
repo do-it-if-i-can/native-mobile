@@ -12,55 +12,45 @@ export type ButtonProps = StyleProps & {
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
   isBorder?: true;
-  activeOpacity?: number;
   onPress?: () => void;
 };
 
-export const Button: FC<ButtonProps> = memo(
-  ({
-    // 基本的に使用しない
-    // custom themeで色を指定する
-    lightBg,
-    darkBg,
-    lightColor,
-    darkColor,
-    // custom theme
+export const Button: FC<ButtonProps> = memo((props) => {
+  const {
     bg = "bg1",
     color = "color1",
-    // ViewProps
+    darkBg,
+    lightBg,
+    lightColor,
+    darkColor,
     isBorder,
     outlineStyle,
-    // TouchableOpacityProps
-    activeOpacity = 0.9,
     viewStyle,
-    // TextProps
-    label,
     textStyle,
-    // icon
+    label,
     leftIcon,
     rightIcon,
-    // onPress
     onPress,
-  }) => {
-    const borderColor = useThemeColor({}, isBorder ? "border" : bg);
+  } = props;
 
-    return (
-      <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
-        <TouchableOpacity
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
-          {...{ lightBg, darkBg, bg, activeOpacity }}
-        >
-          {leftIcon}
-          <Text style={[defaultStyle.text, textStyle]} {...{ lightColor, darkColor, color }}>
-            {label}
-          </Text>
-          {rightIcon}
-        </TouchableOpacity>
-      </BounceableView>
-    );
-  },
-);
+  const borderColor = useThemeColor({}, isBorder ? "border" : bg);
+
+  return (
+    <BounceableView viewStyle={[defaultStyle.outline, outlineStyle]} onPress={onPress}>
+      <TouchableOpacity
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={[defaultStyle.bg, viewStyle, { borderWidth: 1, borderColor }]}
+        {...{ lightBg, darkBg, bg }}
+      >
+        {leftIcon}
+        <Text style={[defaultStyle.text, textStyle]} {...{ lightColor, darkColor, color }}>
+          {label}
+        </Text>
+        {rightIcon}
+      </TouchableOpacity>
+    </BounceableView>
+  );
+});
 
 const defaultStyle = StyleSheet.create({
   outline: {

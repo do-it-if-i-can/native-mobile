@@ -1,15 +1,14 @@
-// inlin style permission
 /* eslint-disable react-native/no-inline-styles */
 
 import type { FC } from "react";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { memo, useCallback, useEffect, useRef } from "react";
 import { useToaster } from "react-hot-toast/src/core/use-toaster";
 import { Animated } from "react-native";
 
 import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
 
-const ToastBar = ({ toast, updateHeight, offset, options: _options, position: _position, ..._props }: any) => {
+const ToastBar = memo(({ toast, updateHeight, offset, options: _options, position: _position, ..._props }: any) => {
   const fadeAnim = useRef(new Animated.Value(0.5)).current;
   const posAnim = useRef(new Animated.Value(-80)).current;
 
@@ -67,7 +66,6 @@ const ToastBar = ({ toast, updateHeight, offset, options: _options, position: _p
             width: 0,
             height: 1,
           },
-          shadowColor: "#888888",
           shadowOpacity: 0.4,
           elevation: 1,
         }}
@@ -92,9 +90,9 @@ const ToastBar = ({ toast, updateHeight, offset, options: _options, position: _p
       </View>
     </Animated.View>
   );
-};
+});
 
-export const Toaster: FC<any> = ({ position = "top-center", containerStyle, toastOptions }) => {
+export const Toaster: FC<any> = memo(({ position = "top-center", containerStyle, toastOptions }) => {
   const { toasts, handlers } = useToaster();
   return (
     <View
@@ -125,4 +123,4 @@ export const Toaster: FC<any> = ({ position = "top-center", containerStyle, toas
       ))}
     </View>
   );
-};
+});

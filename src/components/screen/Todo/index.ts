@@ -1,2 +1,5 @@
-export type { TodoScreenProps } from "./ScreenProps";
-export { TodoScreen } from "./Todo.screen";
+import type { StackScreenProps as Props } from "~/types";
+
+export type TodoScreenProps = Props<"TodoScreen">;
+export { DnDSample } from "./DnDSample";
+export { Todo } from "./Todo";
