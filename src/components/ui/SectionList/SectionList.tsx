@@ -105,6 +105,7 @@ const style = StyleSheet.create({
     width: "auto",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
   },
   list_text: {
     width: "auto",

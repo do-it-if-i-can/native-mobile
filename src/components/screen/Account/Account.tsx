@@ -1,65 +1,100 @@
 import type { FC } from "react";
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
-import { useSetRecoilState } from "recoil";
 
-import { ActionCheckModal } from "~/components/screen/Account/modal";
 import { Button } from "~/components/ui/Button";
+import { Apple, Google } from "~/components/ui/Icon";
+import type { SectionListDataType } from "~/components/ui/SectionList/SectionList";
+import { SectionList } from "~/components/ui/SectionList/SectionList";
 import { Text } from "~/components/ui/Text";
-import { View } from "~/components/ui/View";
-import { JWT_TOKEN } from "~/constants/ENV";
-import { user } from "~/stores/user";
-import { deleteSecureStore } from "~/utils/secureStore";
+import { BounceableView } from "~/components/ui/View";
 
 import type { AccountScreenProps } from ".";
 
-export const Account: FC<AccountScreenProps> = (props) => {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const setAuthUser = useSetRecoilState(user);
-
-  const onCloseModal = useCallback(() => {
-    setModalVisible(false);
-  }, []);
-
-  const onPushSetting = () => {
-    props.navigation.goBack();
-  };
-
-  const onOpenModal = useCallback(() => {
-    setModalVisible(true);
-  }, []);
-
-  const onSignOut = useCallback(async () => {
-    await deleteSecureStore(JWT_TOKEN);
-    setAuthUser({
-      isSignIn: false,
-      user: null,
-    });
-  }, []);
-
-  return (
-    <>
-      <ActionCheckModal isVisible={isModalVisible} onCloseModal={onCloseModal} onModalAction={onSignOut} />
-      <View style={style.container}>
-        <Text style={style.title}>アカウント設定</Text>
-        <Button label="modal dialog open" bg="danger" color="white" onPress={onOpenModal} />
-        <Button label="go back" isBorder onPress={onPushSetting} />
-      </View>
-    </>
-  );
+export const Account: FC<AccountScreenProps> = () => {
+  return <SectionList data={SECTION_LIST_DATA} />;
 };
 
 const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "3%",
+  button_outline: {
+    width: "50%",
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: "5%",
+  button_bg: {
+    paddingVertical: 12,
+  },
+  button_text: {
+    fontSize: 15,
   },
 });
+
+const LogoutButton: FC = () => {
+  return (
+    <BounceableView viewStyle={{ width: "auto" }}>
+      <Text color="danger" style={{ fontWeight: "600", fontSize: 16 }}>
+        ログアウト
+      </Text>
+    </BounceableView>
+  );
+};
+
+const DeleteAccountButton: FC = () => {
+  return (
+    <BounceableView viewStyle={{ width: "auto" }}>
+      <Text color="danger" style={{ fontWeight: "600", fontSize: 16 }}>
+        アカウントの削除
+      </Text>
+    </BounceableView>
+  );
+};
+
+const SECTION_LIST_DATA: SectionListDataType = [
+  {
+    id: "setting",
+    sectionLabel: "アカウントの連携",
+    list: [
+      {
+        id: "profile",
+        leftLabel: "Google",
+        leftComponent: <Google />,
+        rightComponent: (
+          <Button
+            label="解除する"
+            bg="bg2"
+            outlineStyle={style.button_outline}
+            viewStyle={style.button_bg}
+            textStyle={style.button_text}
+          />
+        ),
+      },
+      {
+        id: "account",
+        leftLabel: "Apple",
+        leftComponent: <Apple />,
+        rightComponent: (
+          <Button
+            label="連携する"
+            bg="accent"
+            color="white"
+            outlineStyle={style.button_outline}
+            viewStyle={style.button_bg}
+            textStyle={style.button_text}
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: "support",
+    sectionLabel: "アカウントの操作",
+    list: [
+      {
+        id: "privacy",
+        leftComponent: <LogoutButton />,
+      },
+      {
+        id: "terms",
+        leftComponent: <DeleteAccountButton />,
+      },
+    ],
+  },
+];
