@@ -21,33 +21,24 @@ export const RootNavigator: FC = () => {
   const backgroundColor = useThemeColor({}, "bg1");
 
   if (!session) return <ActivityIndicator />;
+
   return (
     <RootStack.Navigator
       initialRouteName={session.route}
       screenOptions={{
         headerStyle: { backgroundColor },
+        headerShown: false,
       }}
     >
-      <RootStack.Screen
-        name="NotFoundScreen"
-        component={NotFoundScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
+      <RootStack.Screen name="NotFoundScreen" component={NotFoundScreen} options={{}} />
 
-      <RootStack.Screen
-        name="SignInScreen"
-        component={SignInScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
+      <RootStack.Screen name="SignInScreen" component={SignInScreen} options={{}} />
 
       <RootStack.Screen
         name="TodoScreen"
         component={TodoScreen}
         options={({ navigation }) => ({
+          headerShown: true,
           headerShadowVisible: false,
           headerTitle: () => <QinTodo width={120} height={40} />,
           headerRight: () => {
@@ -58,7 +49,7 @@ export const RootNavigator: FC = () => {
       />
 
       <RootStack.Group screenOptions={{ presentation: "fullScreenModal" }}>
-        <RootStack.Screen name="SettingNavigator" component={SettingNavigator} />
+        <RootStack.Screen name="SettingNavigator" component={SettingNavigator} options={{}} />
       </RootStack.Group>
     </RootStack.Navigator>
   );

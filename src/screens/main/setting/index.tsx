@@ -3,6 +3,7 @@ import type { FC } from "react";
 import React, { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
+import { GoBackButton } from "~/components/ui/Button";
 import { inputAccessoryIsVisible } from "~/stores/inputAccessoryIsVisible";
 import type { SettingStackParamList } from "~/types";
 
@@ -22,11 +23,52 @@ export const SettingNavigator: FC = () => {
   }, [setIsVisible]);
 
   return (
-    <SettingStack.Navigator initialRouteName="SettingScreen" screenOptions={{ headerShown: false }}>
-      <SettingStack.Screen name="SettingScreen" component={SettingScreen} />
-      <SettingStack.Screen name="AccountScreen" component={AccountScreen} />
-      <SettingStack.Screen name="ProfileScreen" component={ProfileScreen} />
-      <SettingStack.Screen name="ThemeScreen" component={ThemeScreen} />
+    <SettingStack.Navigator initialRouteName="SettingScreen">
+      <SettingStack.Screen
+        name="SettingScreen"
+        component={SettingScreen}
+        options={{
+          title: "設定",
+          headerShadowVisible: false,
+          headerLeft: () => <GoBackButton type="close" />,
+        }}
+      />
+      <SettingStack.Screen
+        name="AccountScreen"
+        component={AccountScreen}
+        options={({ navigation }) => ({
+          title: "アカウント",
+          headerShadowVisible: false,
+          headerLeft: () => {
+            const onNavigation = () => navigation.navigate("SettingScreen");
+            return <GoBackButton onPress={onNavigation} />;
+          },
+        })}
+      />
+      <SettingStack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={({ navigation }) => ({
+          title: "プロフィール",
+          headerShadowVisible: false,
+          headerLeft: () => {
+            const onNavigation = () => navigation.navigate("SettingScreen");
+            return <GoBackButton onPress={onNavigation} />;
+          },
+        })}
+      />
+      <SettingStack.Screen
+        name="ThemeScreen"
+        component={ThemeScreen}
+        options={({ navigation }) => ({
+          title: "テーマ",
+          headerShadowVisible: false,
+          headerLeft: () => {
+            const onNavigation = () => navigation.navigate("SettingScreen");
+            return <GoBackButton onPress={onNavigation} />;
+          },
+        })}
+      />
     </SettingStack.Navigator>
   );
 };

@@ -1,20 +1,20 @@
-import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import type { FC } from "react";
 import React, { memo, useCallback } from "react";
 import { StyleSheet } from "react-native";
 
+import { ChevronLeftIcon, XIcon } from "~/components/ui/Icon";
 import { BounceableView } from "~/components/ui/View";
-import { useThemeColor } from "~/hooks/useThemeColor";
 import type { IconThemeProps } from "~/types/style";
 
 type Props = IconThemeProps & {
   isFloating?: true;
+  type?: "back" | "close";
+  onPress?: () => void;
 };
 
 export const GoBackButton: FC<Props> = memo((props) => {
-  const { icon = "icon1", lightIcon, darkIcon, isFloating } = props;
-  const iconColor = useThemeColor({ light: lightIcon, dark: darkIcon }, icon);
+  const { icon = "icon1", lightIcon, darkIcon, isFloating, onPress, type = "back" } = props;
   const navigation = useNavigation();
 
   const onGoBack = useCallback(() => {
@@ -22,8 +22,13 @@ export const GoBackButton: FC<Props> = memo((props) => {
   }, [navigation]);
 
   return (
-    <BounceableView viewStyle={[style.button, isFloating && style.float]} activeScale={0.9} onPress={onGoBack}>
-      <MaterialIcons name="keyboard-arrow-left" size={40} color={iconColor} />
+    <BounceableView
+      viewStyle={[style.button, isFloating && style.float]}
+      activeScale={0.9}
+      onPress={onPress || onGoBack}
+    >
+      {type === "back" && <ChevronLeftIcon {...{ icon, lightIcon, darkIcon }} size={28} />}
+      {type === "close" && <XIcon {...{ icon, lightIcon, darkIcon }} size={28} />}
     </BounceableView>
   );
 });
