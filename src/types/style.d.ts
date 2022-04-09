@@ -37,3 +37,12 @@ export type borderThemeProps = Pick<StyleProps, "border" | "lightBorder" | "dark
 export type CustomViewStyleProps = Pick<StyleProps, "viewStyle" | "bg" | "lightBg" | "darkBg">;
 
 export type TextInputStyleProps = Omit<StyleProps, "outlineStyle">;
+
+export type CardStyleProps = Omit<
+  StyleProps,
+  "textStyle" | "color" | "lightColor" | "darkColor" | "icon" | "lightIcon" | "darkIcon"
+>;
+
+export type HeroIconStyle = IconThemeProps & {
+  size?: number;
+};
