@@ -7,8 +7,11 @@ import { Apple, Google, QinTodo } from "~/components/ui/Icon";
 import { View } from "~/components/ui/View";
 
 import type { SignInScreenProps } from ".";
+import { useSignInAuth0 } from "./useSignInAuth0";
 
 export const SignIn: FC<SignInScreenProps> = () => {
+  const { onSignIn } = useSignInAuth0();
+
   return (
     <View style={style.container}>
       <View style={style.icon_area}>
@@ -25,6 +28,7 @@ export const SignIn: FC<SignInScreenProps> = () => {
         lightColor="#0c0c0c"
         darkBg="#FFF"
         darkColor="#0c0c0c"
+        onPress={onSignIn}
       />
 
       <Button
@@ -37,6 +41,7 @@ export const SignIn: FC<SignInScreenProps> = () => {
         lightColor="#FFF"
         darkBg="#000000"
         darkColor="#FFF"
+        onPress={onSignIn}
       />
     </View>
   );
