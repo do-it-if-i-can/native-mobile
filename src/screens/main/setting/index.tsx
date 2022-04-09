@@ -8,8 +8,10 @@ import { inputAccessoryIsVisible } from "~/stores/inputAccessoryIsVisible";
 import type { SettingStackParamList } from "~/types";
 
 import { AccountScreen } from "./account.screen";
+import { PrivacyScreen } from "./privacy.screen";
 import { ProfileScreen } from "./profile.screen";
 import { SettingScreen } from "./setting.screen";
+import { TermsScreen } from "./terms.screen";
 import { ThemeScreen } from "./theme.screen";
 
 const SettingStack = createNativeStackNavigator<SettingStackParamList>();
@@ -62,6 +64,30 @@ export const SettingNavigator: FC = () => {
         component={ThemeScreen}
         options={({ navigation }) => ({
           title: "テーマ",
+          headerShadowVisible: false,
+          headerLeft: () => {
+            const onNavigation = () => navigation.navigate("SettingScreen");
+            return <GoBackButton onPress={onNavigation} />;
+          },
+        })}
+      />
+      <SettingStack.Screen
+        name="TermsScreen"
+        component={TermsScreen}
+        options={({ navigation }) => ({
+          title: "利用規約",
+          headerShadowVisible: false,
+          headerLeft: () => {
+            const onNavigation = () => navigation.navigate("SettingScreen");
+            return <GoBackButton onPress={onNavigation} />;
+          },
+        })}
+      />
+      <SettingStack.Screen
+        name="PrivacyScreen"
+        component={PrivacyScreen}
+        options={({ navigation }) => ({
+          title: "プライバシーポリシー",
           headerShadowVisible: false,
           headerLeft: () => {
             const onNavigation = () => navigation.navigate("SettingScreen");

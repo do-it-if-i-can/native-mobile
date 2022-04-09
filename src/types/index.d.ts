@@ -23,6 +23,8 @@ export type SettingStackParamList = {
   AccountScreen: undefined;
   ProfileScreen: undefined;
   ThemeScreen: undefined;
+  TermsScreen: undefined;
+  PrivacyScreen: undefined;
 };
 
 export type SettingScreenProps<T extends keyof SettingStackParamList> = CompositeScreenProps<
