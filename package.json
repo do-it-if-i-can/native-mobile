@@ -80,7 +80,7 @@
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "0.17.1",
     "react-native-webview": "11.13.0",
-    "recoil": "^0.6.1",
+    "recoil": "^0.7.0",
     "rn-bounceable": "^1.1.0",
     "yarn": "^1.22.17"
   },
