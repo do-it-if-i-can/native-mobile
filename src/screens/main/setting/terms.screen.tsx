@@ -9,7 +9,7 @@ import { Layout } from "~/components/ui/Layout";
 export const TermsScreen: FC<TermsScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout safeArea="bottom-horizontal">
+      <Layout safeArea="horizontal">
         <Terms {...props} />
       </Layout>
     </LayoutErrorBoundary>

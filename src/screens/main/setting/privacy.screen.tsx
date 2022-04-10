@@ -9,7 +9,7 @@ import { Layout } from "~/components/ui/Layout";
 export const PrivacyScreen: FC<PrivacyScreenProps> = (props) => {
   return (
     <LayoutErrorBoundary>
-      <Layout safeArea="bottom-horizontal">
+      <Layout safeArea="horizontal">
         <Privacy {...props} />
       </Layout>
     </LayoutErrorBoundary>

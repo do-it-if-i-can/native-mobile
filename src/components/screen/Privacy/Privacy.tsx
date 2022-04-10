@@ -1,16 +1,26 @@
 import type { FC } from "react";
 import React from "react";
+import WebView from "react-native-webview";
 
-import { Text } from "~/components/ui/Text";
-import { View } from "~/components/ui/View";
+import { ActivityIndicator } from "~/components/ui/Progress";
 import type { SettingScreenProps } from "~/types";
 
 export type PrivacyScreenProps = SettingScreenProps<"PrivacyScreen">;
 
+// TODO:テーマ変更に対応させる
+const injectedCode = `
+  (function() {
+    localStorage.setItem('theme', 'light');
+  })()
+`;
+
 export const Privacy: FC<PrivacyScreenProps> = () => {
   return (
-    <View>
-      <Text>PrivacyScreen</Text>
-    </View>
+    <WebView
+      source={{ uri: "http://localhost:3000/setting/privacy" }}
+      injectedJavaScriptBeforeContentLoaded={injectedCode}
+      renderLoading={() => <ActivityIndicator style={{ marginBottom: 300 }} />}
+      startInLoadingState
+    />
   );
 };
