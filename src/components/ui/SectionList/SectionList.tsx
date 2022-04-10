@@ -40,20 +40,7 @@ type Props = {
   data: SectionListDataType;
 };
 
-const currentThemeCheck = (resolvedTheme?: ThemeKey) => {
-  switch (resolvedTheme) {
-    case "light":
-      return "ライト";
-    case "dark":
-      return "ダーク";
-    default:
-      return "端末の設定に合わせる";
-  }
-};
-
-export const SectionList: FC<Props> = ({ resolvedTheme, data }) => {
-  const currentTheme = currentThemeCheck(resolvedTheme);
-
+export const SectionList: FC<Props> = ({ data }) => {
   return (
     <>
       {data.map(({ id, sectionLabel, list }) => (
@@ -77,9 +64,6 @@ export const SectionList: FC<Props> = ({ resolvedTheme, data }) => {
                 <Text style={[style.list_text, item.rightComponent ? style.text_right : null]} color={item.color}>
                   {item.rightLabel}
                 </Text>
-                {item.id === "theme" && (
-                  <Text style={[style.list_text, item.rightComponent ? style.text_right : null]}>{currentTheme}</Text>
-                )}
                 {item.rightComponent}
               </View>
             </SettingListItem>

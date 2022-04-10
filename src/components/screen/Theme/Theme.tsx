@@ -1,79 +1,65 @@
 import type { FC } from "react";
 import React from "react";
-// import { toast } from 'react-hot-toast/src/core/toast';
-import { StyleSheet } from "react-native";
+import { useRecoilState } from "recoil";
 
-import { Button } from "~/components/ui/Button";
-import { Text } from "~/components/ui/Text";
-import { View } from "~/components/ui/View";
-import { toastKit } from "~/utils/toastKit";
+import { CheckIcon } from "~/components/ui/Icon";
+import { SectionList } from "~/components/ui/SectionList";
+import type { SectionListDataType } from "~/components/ui/SectionList/SectionList";
+import { theme } from "~/stores/theme";
+import { deleteSecureStore, saveSecureStore } from "~/utils/secureStore";
 
 import type { ThemeScreenProps } from ".";
 
-export const Theme: FC<ThemeScreenProps> = (props) => {
-  const onNavigateSetting = () => {
-    props.navigation.goBack();
-  };
+const theme_key = "qin_todo_theme_vfauih87oa";
 
-  const onPress = async () => {
-    const { errorToast, successToast } = toastKit();
-    // delay 1s
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    errorToast();
+type Theme = null | "light" | "dark";
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    successToast("成功しました");
-  };
-
-  // const onPressPromise = async () => {
-  //   const myPromise = new Promise((resolve) => setTimeout(resolve, 2000));
-  //   toast.promise(
-  //     myPromise,
-  //     {
-  //       loading: 'Loading',
-  //       error: 'Error when fetching',
-  //       success: 'Got the data',
-  //     },
-  //     {
-  //       style: {
-  //         minWidth: '250px',
-  //       },
-  //       loading: {
-  //         duration: 3000,
-  //         icon: '🔥',
-  //       },
-  //       error: {
-  //         duration: 3000,
-  //         icon: '🔥',
-  //       },
-  //       success: {
-  //         duration: 3000,
-  //         icon: '🔥',
-  //       },
-  //     },
-  //   );
-  // };
-
-  return (
-    <View style={style.container}>
-      <Text style={style.title}>テーマ</Text>
-      <Button label="react-hot-toast" bg="danger" color="white" onPress={onPress} />
-      <Button label="go back" isBorder onPress={onNavigateSetting} />
-    </View>
-  );
+const IsCheckedIcon = (label: Theme, resolvedTheme: Theme) => {
+  if (resolvedTheme === label) {
+    return <CheckIcon icon="accent" />;
+  }
 };
 
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "3%",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: "5%",
-  },
-});
+export const Theme: FC<ThemeScreenProps> = () => {
+  const [themeInfo, setThemeInfo] = useRecoilState(theme);
+
+  const SECTION_LIST_DATA: SectionListDataType = [
+    {
+      id: "setting",
+      list: [
+        {
+          id: "os",
+          type: "button",
+          leftLabel: "端末の設定に合わせる",
+          rightComponent: IsCheckedIcon(null, themeInfo),
+          onPress: async () => {
+            await deleteSecureStore(theme_key);
+            setThemeInfo(null);
+          },
+        },
+        {
+          id: "light",
+          type: "button",
+          leftLabel: "ライト",
+          rightComponent: IsCheckedIcon("light", themeInfo),
+          onPress: async () => {
+            await saveSecureStore(theme_key, "light");
+            setThemeInfo("light");
+          },
+        },
+        {
+          id: "dark",
+          type: "button",
+          leftLabel: "ダーク",
+          rightComponent: IsCheckedIcon("dark", themeInfo),
+          onPress: async () => {
+            await saveSecureStore(theme_key, "dark");
+            setThemeInfo("dark");
+          },
+        },
+      ],
+    },
+  ];
+
+  return <SectionList data={SECTION_LIST_DATA} />;
+};

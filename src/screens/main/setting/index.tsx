@@ -18,6 +18,7 @@ import { ThemeScreen } from "./theme.screen";
 const SettingStack = createNativeStackNavigator<SettingStackParamList>();
 
 export const SettingNavigator: FC = () => {
+  const color = useThemeColor({}, "color1");
   const backgroundColor = useThemeColor({}, "bg1");
   const setIsVisible = useSetRecoilState(inputAccessoryIsVisible);
 
@@ -31,6 +32,7 @@ export const SettingNavigator: FC = () => {
       initialRouteName="SettingScreen"
       screenOptions={{
         headerStyle: { backgroundColor },
+        headerTitleStyle: { color },
       }}
     >
       <SettingStack.Screen

@@ -19,7 +19,6 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 export const RootNavigator: FC = () => {
   const session = useListenSession();
   const backgroundColor = useThemeColor({}, "bg1");
-
   if (!session) return <ActivityIndicator />;
 
   return (
@@ -39,6 +38,7 @@ export const RootNavigator: FC = () => {
         component={TodoScreen}
         options={({ navigation }) => ({
           headerShown: true,
+          headerStyle: { backgroundColor },
           headerShadowVisible: false,
           headerTitle: () => <QinTodo width={120} height={40} />,
           headerRight: () => {
