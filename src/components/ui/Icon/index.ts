@@ -1,4 +1,5 @@
 export { Apple } from "./Apple";
+export { CheckIcon } from "./CheckIcon";
 export { ChevronLeftIcon } from "./ChevronLeftIcon";
 export { ChevronRightIcon } from "./ChevronRightIcon";
 export { ExternalLinkIcon } from "./ExternalLinkIcon";
