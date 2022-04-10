@@ -74,7 +74,7 @@ export const useListenSession = () => {
     if (!authUser?.user) {
       (async () => {
         const result = await listenSession();
-        await sleep();
+        await sleep(1000);
         setSessionState(result);
       })();
     }

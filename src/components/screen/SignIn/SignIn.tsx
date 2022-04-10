@@ -5,12 +5,12 @@ import { StyleSheet } from "react-native";
 import { Button } from "~/components/ui/Button";
 import { Apple, Google, QinTodo } from "~/components/ui/Icon";
 import { View } from "~/components/ui/View";
+import { useAuth0 } from "~/hooks/useAuth0";
 
 import type { SignInScreenProps } from ".";
-import { useSignInAuth0 } from "./useSignInAuth0";
 
 export const SignIn: FC<SignInScreenProps> = () => {
-  const { onSignIn } = useSignInAuth0();
+  const { onSignIn } = useAuth0();
 
   return (
     <View style={style.container}>
