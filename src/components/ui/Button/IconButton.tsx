@@ -14,7 +14,7 @@ type Props = {
 export const IconButton: FC<Props> = memo(({ style, children, onPress }) => {
   return (
     <BounceableView viewStyle={[defaultStyle.outline, style]} onPress={onPress}>
-      <TouchableOpacity>{children}</TouchableOpacity>
+      <TouchableOpacity bg="bg0">{children}</TouchableOpacity>
     </BounceableView>
   );
 });

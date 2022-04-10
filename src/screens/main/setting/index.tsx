@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 import { HeaderLeftButton } from "~/components/ui/Button";
+import { useThemeColor } from "~/hooks/useThemeColor";
 import { inputAccessoryIsVisible } from "~/stores/inputAccessoryIsVisible";
 import type { SettingStackParamList } from "~/types";
 
@@ -17,6 +18,7 @@ import { ThemeScreen } from "./theme.screen";
 const SettingStack = createNativeStackNavigator<SettingStackParamList>();
 
 export const SettingNavigator: FC = () => {
+  const backgroundColor = useThemeColor({}, "bg1");
   const setIsVisible = useSetRecoilState(inputAccessoryIsVisible);
 
   useEffect(() => {
@@ -25,7 +27,12 @@ export const SettingNavigator: FC = () => {
   }, [setIsVisible]);
 
   return (
-    <SettingStack.Navigator initialRouteName="SettingScreen">
+    <SettingStack.Navigator
+      initialRouteName="SettingScreen"
+      screenOptions={{
+        headerStyle: { backgroundColor },
+      }}
+    >
       <SettingStack.Screen
         name="SettingScreen"
         component={SettingScreen}
