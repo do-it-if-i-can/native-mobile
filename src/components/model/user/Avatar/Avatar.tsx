@@ -3,8 +3,8 @@ import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { useRecoilValue } from "recoil";
 
+import { IconButton } from "~/components/ui/Button";
 import { DummyAvatar } from "~/components/ui/DummyAvatar";
-import { TouchableOpacity } from "~/components/ui/View";
 import { user } from "~/stores/user";
 
 type Props = {
@@ -15,13 +15,13 @@ export const Avatar: FC<Props> = (props) => {
   const authSession = useRecoilValue(user);
 
   return (
-    <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
+    <IconButton onPress={props.onPress}>
       {authSession?.user ? (
         <Image source={{ uri: authSession.user.avatar }} style={style.avatar} />
       ) : (
         <DummyAvatar size={40} />
       )}
-    </TouchableOpacity>
+    </IconButton>
   );
 };
 

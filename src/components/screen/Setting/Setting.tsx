@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import React, { useCallback } from "react";
 
-import { ChevronRightIcon } from "~/components/ui/Icon";
+import { ChevronRightIcon, ExternalLinkIcon } from "~/components/ui/Icon";
 import { SectionList } from "~/components/ui/SectionList";
 import type { SectionListDataType } from "~/components/ui/SectionList/SectionList";
 
@@ -59,7 +59,7 @@ export const Setting: FC<SettingScreenProps> = (props) => {
           type: "button",
           leftLabel: "オープンソースライセンス",
           onPress: useCallback(() => props.navigation.navigate("TermsScreen"), [props.navigation]),
-          rightComponent: <ChevronRightIcon />,
+          rightComponent: <ExternalLinkIcon />,
         },
         {
           id: "contact",

@@ -8,7 +8,7 @@ import { useThemeColor } from "~/hooks/useThemeColor";
 import type { StyleProps } from "~/types/style";
 
 export type ButtonProps = StyleProps & {
-  label: string;
+  label?: string;
   leftIcon?: ReactElement;
   rightIcon?: ReactElement;
   isBorder?: true;

@@ -1,10 +1,14 @@
 import type { FC } from "react";
-import React from "react";
+import React, { memo } from "react";
 import Svg, { Path } from "react-native-svg";
 
-export const Google: FC = () => {
+type Props = {
+  size?: number;
+};
+
+export const Google: FC<Props> = memo(({ size = 38 }) => {
   return (
-    <Svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <Svg width={size} height={size} viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
       <Path
         d="M36.3424 16.7355H34.9999V16.6663H19.9999V23.333H29.4191C28.0449 27.2138 24.3524 29.9997 19.9999 29.9997C14.4774 29.9997 9.99992 25.5222 9.99992 19.9997C9.99992 14.4772 14.4774 9.99967 19.9999 9.99967C22.5491 9.99967 24.8683 10.9613 26.6341 12.5322L31.3483 7.81801C28.3716 5.04384 24.3899 3.33301 19.9999 3.33301C10.7958 3.33301 3.33325 10.7955 3.33325 19.9997C3.33325 29.2038 10.7958 36.6663 19.9999 36.6663C29.2041 36.6663 36.6666 29.2038 36.6666 19.9997C36.6666 18.8822 36.5516 17.7913 36.3424 16.7355Z"
         fill="#FFC107"
@@ -23,4 +27,4 @@ export const Google: FC = () => {
       />
     </Svg>
   );
-};
+});

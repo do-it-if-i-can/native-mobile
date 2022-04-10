@@ -2,12 +2,11 @@ import type { FC } from "react";
 import React from "react";
 import { StyleSheet } from "react-native";
 
-import { Button } from "~/components/ui/Button";
+import { Button, IconButton } from "~/components/ui/Button";
 import { Apple, Google } from "~/components/ui/Icon";
 import type { SectionListDataType } from "~/components/ui/SectionList/SectionList";
 import { SectionList } from "~/components/ui/SectionList/SectionList";
 import { Text } from "~/components/ui/Text";
-import { BounceableView } from "~/components/ui/View";
 
 import type { AccountScreenProps } from ".";
 
@@ -20,30 +19,30 @@ const style = StyleSheet.create({
     width: "50%",
   },
   button_bg: {
-    paddingVertical: 12,
+    paddingVertical: 10,
   },
   button_text: {
-    fontSize: 15,
+    fontSize: 14,
   },
 });
 
 const LogoutButton: FC = () => {
   return (
-    <BounceableView viewStyle={{ width: "auto" }}>
+    <IconButton>
       <Text color="danger" style={{ fontWeight: "600", fontSize: 16 }}>
         ログアウト
       </Text>
-    </BounceableView>
+    </IconButton>
   );
 };
 
 const DeleteAccountButton: FC = () => {
   return (
-    <BounceableView viewStyle={{ width: "auto" }}>
+    <IconButton>
       <Text color="danger" style={{ fontWeight: "600", fontSize: 16 }}>
         アカウントの削除
       </Text>
-    </BounceableView>
+    </IconButton>
   );
 };
 
@@ -55,7 +54,7 @@ const SECTION_LIST_DATA: SectionListDataType = [
       {
         id: "profile",
         leftLabel: "Google",
-        leftComponent: <Google />,
+        leftComponent: <Google size={28} />,
         rightComponent: (
           <Button
             label="解除する"
@@ -69,7 +68,7 @@ const SECTION_LIST_DATA: SectionListDataType = [
       {
         id: "account",
         leftLabel: "Apple",
-        leftComponent: <Apple />,
+        leftComponent: <Apple size={28} />,
         rightComponent: (
           <Button
             label="連携する"

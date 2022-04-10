@@ -1,6 +1,7 @@
 export { Apple } from "./Apple";
 export { ChevronLeftIcon } from "./ChevronLeftIcon";
 export { ChevronRightIcon } from "./ChevronRightIcon";
+export { ExternalLinkIcon } from "./ExternalLinkIcon";
 export { Google } from "./Google";
 export { PlusCircleIcon } from "./PlusCircleIcon";
 export { PlusIcon } from "./PlusIcon";

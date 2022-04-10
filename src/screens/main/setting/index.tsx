@@ -3,7 +3,7 @@ import type { FC } from "react";
 import React, { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
-import { GoBackButton } from "~/components/ui/Button";
+import { HeaderLeftButton } from "~/components/ui/Button";
 import { inputAccessoryIsVisible } from "~/stores/inputAccessoryIsVisible";
 import type { SettingStackParamList } from "~/types";
 
@@ -29,11 +29,13 @@ export const SettingNavigator: FC = () => {
       <SettingStack.Screen
         name="SettingScreen"
         component={SettingScreen}
-        options={{
+        options={() => ({
           title: "設定",
           headerShadowVisible: false,
-          headerLeft: () => <GoBackButton type="close" />,
-        }}
+          headerLeft: () => {
+            return <HeaderLeftButton type="close" />;
+          },
+        })}
       />
       <SettingStack.Screen
         name="AccountScreen"
@@ -43,7 +45,7 @@ export const SettingNavigator: FC = () => {
           headerShadowVisible: false,
           headerLeft: () => {
             const onNavigation = () => navigation.navigate("SettingScreen");
-            return <GoBackButton onPress={onNavigation} />;
+            return <HeaderLeftButton type="back" onPress={onNavigation} />;
           },
         })}
       />
@@ -55,7 +57,7 @@ export const SettingNavigator: FC = () => {
           headerShadowVisible: false,
           headerLeft: () => {
             const onNavigation = () => navigation.navigate("SettingScreen");
-            return <GoBackButton onPress={onNavigation} />;
+            return <HeaderLeftButton type="back" onPress={onNavigation} />;
           },
         })}
       />
@@ -67,7 +69,7 @@ export const SettingNavigator: FC = () => {
           headerShadowVisible: false,
           headerLeft: () => {
             const onNavigation = () => navigation.navigate("SettingScreen");
-            return <GoBackButton onPress={onNavigation} />;
+            return <HeaderLeftButton type="back" onPress={onNavigation} />;
           },
         })}
       />
@@ -79,7 +81,7 @@ export const SettingNavigator: FC = () => {
           headerShadowVisible: false,
           headerLeft: () => {
             const onNavigation = () => navigation.navigate("SettingScreen");
-            return <GoBackButton onPress={onNavigation} />;
+            return <HeaderLeftButton type="back" onPress={onNavigation} />;
           },
         })}
       />
@@ -91,7 +93,7 @@ export const SettingNavigator: FC = () => {
           headerShadowVisible: false,
           headerLeft: () => {
             const onNavigation = () => navigation.navigate("SettingScreen");
-            return <GoBackButton onPress={onNavigation} />;
+            return <HeaderLeftButton type="back" onPress={onNavigation} />;
           },
         })}
       />
