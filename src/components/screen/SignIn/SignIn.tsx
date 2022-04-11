@@ -32,7 +32,7 @@ export const SignIn: FC<SignInScreenProps> = () => {
       />
 
       <Button
-        leftIcon={<Apple />}
+        leftIcon={<Apple lightIcon="#FFF" darkIcon="#FFF" />}
         label="Appleでサインイン"
         outlineStyle={style.button_outline}
         viewStyle={style.button_bg}

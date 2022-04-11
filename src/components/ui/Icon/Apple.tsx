@@ -3,13 +3,12 @@ import React, { memo } from "react";
 import Svg, { Path } from "react-native-svg";
 
 import { useThemeColor } from "~/hooks/useThemeColor";
+import type { HeroIconStyle } from "~/types/style";
 
-type Props = {
-  size?: number;
-};
+type Props = HeroIconStyle;
 
-export const Apple: FC<Props> = memo(({ size = 38 }) => {
-  const iconColor = useThemeColor({ light: "#000", dark: "#FFF" }, "icon1");
+export const Apple: FC<Props> = memo(({ size = 38, lightIcon, darkIcon }) => {
+  const iconColor = useThemeColor({ light: lightIcon, dark: darkIcon }, "icon1");
 
   return (
     <Svg width={size} height={size} viewBox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -86,7 +86,7 @@ const SECTION_LIST_DATA: SectionListDataType = [
       {
         id: "account",
         leftLabel: "Apple",
-        leftComponent: <Apple size={28} />,
+        leftComponent: <Apple size={28} lightIcon="#000" darkIcon="#FFF" />,
         rightComponent: (
           <Button
             label="連携する"
