@@ -17,9 +17,9 @@ module.exports = {
       {
         root: ["./"],
         alias: {
-          graphql: "./graphql",
           assets: "./assets",
           "~": "./src/",
+          $: "./graphql",
         },
       },
     ],

@@ -15,8 +15,8 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "graphql": ["./graphql/*"],
       "assets": ["./assets/*"],
+      "$/*": ["./graphql/*"],
       "~/*": ["./src/*"]
     }
   },

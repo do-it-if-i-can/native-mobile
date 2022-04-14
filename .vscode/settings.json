@@ -15,7 +15,8 @@
   "explorer.sortOrderLexicographicOptions": "unicode",
   "explorer.sortOrder": "type",
   "path-autocomplete.pathMappings": {
-    "~": "${folder}/src"
+    "~": "${folder}/src",
+    "$": "${folder}/graphql"
   },
   "eslint.validate": ["json", "javascript", "javascriptreact", "typescript", "typescriptreact"]
 }
