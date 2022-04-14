@@ -21,6 +21,9 @@ export const TextInput = memo(
       color = "color1",
       lightColor,
       darkColor,
+      border = "primary",
+      lightBorder,
+      darkBorder,
       viewStyle,
       textStyle,
       isFocused,
@@ -29,7 +32,7 @@ export const TextInput = memo(
       ...otherProps
     } = props;
 
-    const primary = useThemeColor({}, "primary");
+    const primary = useThemeColor({ light: lightBorder, dark: darkBorder }, border);
     const placeholder = useThemeColor({}, "color2");
     const textColor = useThemeColor({ light: lightColor, dark: darkColor }, color);
 
