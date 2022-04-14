@@ -1,11 +1,13 @@
-// import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import { AppRegistry } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { RecoilRoot } from "recoil";
 
 import { useCachedResources } from "~/hooks/useCachedResources";
 import { Navigation } from "~/screens";
+import { apolloClient } from "~/utils/apolloClient";
 
 const App = () => {
   const isLoadingComplete = useCachedResources();
@@ -14,12 +16,14 @@ const App = () => {
     return null;
   } else {
     return (
-      <RecoilRoot>
-        <SafeAreaProvider>
-          <Navigation />
-          <StatusBar />
-        </SafeAreaProvider>
-      </RecoilRoot>
+      <ApolloProvider client={apolloClient}>
+        <RecoilRoot>
+          <SafeAreaProvider>
+            <Navigation />
+            <StatusBar />
+          </SafeAreaProvider>
+        </RecoilRoot>
+      </ApolloProvider>
     );
   }
 };
