@@ -71,12 +71,15 @@ export const TodoItem: FC<Props> = memo((props) => {
 const style = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     paddingVertical: "2%",
     paddingHorizontal: "2%",
   },
   todo_text: {
     marginLeft: "3%",
+    marginTop: 2,
     fontSize: 18,
+    lineHeight: 20,
+    width: "90%",
   },
 });
