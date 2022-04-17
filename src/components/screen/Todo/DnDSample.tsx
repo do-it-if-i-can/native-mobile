@@ -1,65 +1,26 @@
 import type { FC } from "react";
-import React, { useState } from "react";
+import React from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import NestedDND from "react-native-nested-dnd/NestedDND";
+import { useRecoilState } from "recoil";
 
 import { TodoItem } from "~/components/model/todo/TodoItem";
 import { Text } from "~/components/ui/Text";
 import { View } from "~/components/ui/View";
+import type { TodoState } from "~/stores/todoListState";
+import { todoListState } from "~/stores/todoListState";
 
 import type { TodoScreenProps } from ".";
 
-const SAMPLE_DATA = [
-  {
-    id: "TODAY",
-    title: "今日する",
-    color: "primary",
-    items: [
-      { id: 1, title: "React勉強", category: "TODAY" },
-      { id: 2, title: "Svelte勉強", category: "TODAY" },
-      { id: 3, title: "Angular勉強", category: "TODAY" },
-      { id: 4, title: "Vue勉強", category: "TODAY" },
-      { id: 5, title: "Next.js勉強", category: "TODAY" },
-      { id: 6, title: "Remix勉強", category: "TODAY" },
-    ],
-  },
-  {
-    id: "TOMORROW",
-    title: "明日する",
-    color: "secondary",
-    items: [
-      { id: 7, title: "Python勉強", category: "TOMORROW" },
-      { id: 8, title: "Go勉強", category: "TOMORROW" },
-      { id: 9, title: "Java勉強", category: "TOMORROW" },
-      { id: 10, title: "Ruby勉強", category: "TOMORROW" },
-      { id: 11, title: "PHP勉強", category: "TOMORROW" },
-      { id: 12, title: "Rust勉強", category: "TOMORROW" },
-    ],
-  },
-  {
-    id: "SOMEDAY",
-    title: "今度する",
-    color: "tertiary",
-    items: [
-      { id: 13, title: "Figma勉強", category: "SOMEDAY" },
-      { id: 14, title: "Docker勉強", category: "SOMEDAY" },
-      { id: 15, title: "Notion勉強", category: "SOMEDAY" },
-      { id: 16, title: "Prisma勉強", category: "SOMEDAY" },
-    ],
-  },
-] as const;
-
-type SampleDataProps = typeof SAMPLE_DATA[number];
-
-const RenderItem: FC<SampleDataProps["items"][number]> = (props) => {
+const RenderItem: FC<any> = (props) => {
   return (
     <View style={style.item_wrap}>
-      <TodoItem status={props.category} title={props.title} />
+      <TodoItem id={props.id} status={props.category} title={props.title} isDone={props.done} />
     </View>
   );
 };
 
-const RenderGroupHeader: FC<SampleDataProps> = (props) => {
+const RenderGroupHeader: FC<any> = (props) => {
   return (
     <View style={style.item_wrap}>
       <Text style={style.category_label} color={props.color}>
@@ -75,15 +36,15 @@ const RenderHeader = () => {
 
 const headerHeight = 20;
 const groupToItemsKey = "items"; // データレコードのkey
-const keyExtractor = (props: SampleDataProps) => props.id; // keyを指定（group,data共通）
+const keyExtractor = (props: TodoState) => props.id; // keyを指定（group,data共通）
 
 export const DnDSample: FC<TodoScreenProps> = () => {
-  const [groups, setGroups] = useState(SAMPLE_DATA);
+  const [todoList, setTodoList] = useRecoilState(todoListState);
 
   return (
     <NestedDND
-      groups={groups}
-      updateGroups={setGroups}
+      groups={todoList}
+      updateGroups={setTodoList}
       groupToItemsKey={groupToItemsKey}
       groupKeyExtractor={keyExtractor}
       itemKeyExtractor={keyExtractor}
