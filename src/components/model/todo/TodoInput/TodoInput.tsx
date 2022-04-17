@@ -1,9 +1,9 @@
 import type { FC } from "react";
-import React, { memo, useCallback, useRef } from "react";
+import React, { memo, useCallback, useEffect, useRef } from "react";
 import { StyleSheet } from "react-native";
 import { useRecoilState } from "recoil";
 
-import { Button } from "~/components/ui/Button";
+import { Button, IconButton } from "~/components/ui/Button";
 import {
   ChevronDoubleDownIcon,
   ChevronDoubleUpIcon,
@@ -11,6 +11,7 @@ import {
   ChevronUpIcon,
   PlusIcon,
   RefreshIcon,
+  XIcon,
 } from "~/components/ui/Icon";
 import { TextInput } from "~/components/ui/TextInput";
 import { View } from "~/components/ui/View";
@@ -41,7 +42,7 @@ export const TodoInput: FC = memo(() => {
   const inputFocusColor = checkedRadioBgTheme(editTodoStateInfo?.category);
 
   const onChangeText = useCallback(
-    (text) =>
+    (text: string) =>
       setEditTodoStateInfo((prev) => {
         return { ...prev, value: text };
       }),
@@ -67,19 +68,56 @@ export const TodoInput: FC = memo(() => {
     [],
   );
 
+  const onInputClear = useCallback(() => {
+    setEditTodoStateInfo((prevState) => {
+      return { ...prevState, value: "", isFocused: true };
+    });
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    inputRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (editTodoStateInfo.category) inputRef.current?.focus();
+  }, [editTodoStateInfo.category]);
+
   return (
     <View style={[style.input_accessory_area, { shadowColor }]} bg="bg1">
-      <TextInput
-        ref={inputRef}
-        value={editTodoStateInfo.value}
-        onChangeText={onChangeText}
-        isFocused={editTodoStateInfo.isFocused}
-        viewStyle={style.input_bg}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        placeholder="タスクを入力する"
-        border={inputFocusColor}
-      />
+      <View
+        style={{
+          position: "relative",
+        }}
+      >
+        <TextInput
+          ref={inputRef}
+          value={editTodoStateInfo.value}
+          onChangeText={onChangeText}
+          isFocused={editTodoStateInfo.isFocused}
+          viewStyle={style.input_bg}
+          textStyle={{
+            paddingRight: 24,
+          }}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          placeholder="タスクを入力する"
+          border={inputFocusColor}
+        />
+
+        {editTodoStateInfo.value ? (
+          <IconButton
+            style={{
+              position: "absolute",
+              top: 10,
+              right: 18,
+            }}
+            onPress={onInputClear}
+          >
+            <XIcon />
+          </IconButton>
+        ) : null}
+      </View>
 
       {editTodoStateInfo.isFocused || editTodoStateInfo.value ? (
         <View style={style.flex_row} bg="bg1">
