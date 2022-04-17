@@ -3,6 +3,7 @@ import React, { memo } from "react";
 import type { StyleProp, ViewStyle } from "react-native";
 import { ActivityIndicator as NativeActivityIndicator, StyleSheet } from "react-native";
 
+import { View } from "~/components/ui/View";
 import { useThemeColor } from "~/hooks/useThemeColor";
 
 type Props = {
@@ -12,7 +13,11 @@ type Props = {
 export const ActivityIndicator: FC<Props> = memo(({ style }) => {
   const primary = useThemeColor({}, "primary");
 
-  return <NativeActivityIndicator size="large" color={primary} style={[defaultStyle.center, style]} />;
+  return (
+    <View bg="bg1" style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <NativeActivityIndicator size="large" color={primary} style={[defaultStyle.center, style]} />
+    </View>
+  );
 });
 
 const defaultStyle = StyleSheet.create({
