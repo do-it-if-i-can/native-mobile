@@ -2,8 +2,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { FC } from "react";
 import React from "react";
 
-import { Avatar } from "~/components/model/user/Avatar";
-import { QinTodo } from "~/components/ui/Icon";
 import { ActivityIndicator } from "~/components/ui/Progress";
 import { useListenSession } from "~/hooks/useListenSession";
 import { useThemeColor } from "~/hooks/useThemeColor";
@@ -36,15 +34,8 @@ export const RootNavigator: FC = () => {
       <RootStack.Screen
         name="TodoScreen"
         component={TodoScreen}
-        options={({ navigation }) => ({
-          headerShown: true,
-          headerStyle: { backgroundColor },
-          headerShadowVisible: false,
-          headerTitle: () => <QinTodo width={120} height={40} />,
-          headerRight: () => {
-            const onNavigation = () => navigation.navigate("SettingNavigator");
-            return <Avatar onPress={onNavigation} />;
-          },
+        options={() => ({
+          headerShown: false,
         })}
       />
 
