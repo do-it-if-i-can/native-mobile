@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import React, { useCallback, useState } from "react";
-import { StyleSheet } from "react-native";
+import { Alert, StyleSheet } from "react-native";
 
 import { ActionCheckModal } from "~/components/screen/Account/ActionCheckModal";
 import { Button, IconButton } from "~/components/ui/Button";
@@ -64,6 +64,22 @@ const DeleteAccountButton: FC = () => {
   );
 };
 
+const onAlert = (provider: "Google" | "Apple") => {
+  Alert.alert(
+    "連携解除",
+    `${provider}との連携を解除しますか？`,
+    [
+      {
+        text: "キャンセル",
+      },
+      {
+        text: "解除する",
+      },
+    ],
+    { cancelable: false },
+  );
+};
+
 const SECTION_LIST_DATA: SectionListDataType = [
   {
     id: "setting",
@@ -80,6 +96,7 @@ const SECTION_LIST_DATA: SectionListDataType = [
             outlineStyle={style.button_outline}
             viewStyle={style.button_bg}
             textStyle={style.button_text}
+            onPress={() => onAlert("Google")}
           />
         ),
       },
@@ -95,6 +112,7 @@ const SECTION_LIST_DATA: SectionListDataType = [
             outlineStyle={style.button_outline}
             viewStyle={style.button_bg}
             textStyle={style.button_text}
+            onPress={() => onAlert("Apple")}
           />
         ),
       },
