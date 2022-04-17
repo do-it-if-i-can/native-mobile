@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-import type { Category } from "$/gql";
+export type Category = "SOMEDAY" | "TODAY" | "TOMORROW";
 
 export type EditTodoState = {
   isFocused: boolean;

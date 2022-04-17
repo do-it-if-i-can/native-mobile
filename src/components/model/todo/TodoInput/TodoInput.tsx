@@ -1,4 +1,3 @@
-import type { Category } from "graphql/gql";
 import type { FC } from "react";
 import React, { memo, useCallback, useRef } from "react";
 import { StyleSheet } from "react-native";
@@ -17,6 +16,8 @@ import { TextInput } from "~/components/ui/TextInput";
 import { View } from "~/components/ui/View";
 import { useThemeColor } from "~/hooks/useThemeColor";
 import { editTodoState } from "~/stores/editTodoState";
+
+export type Category = "SOMEDAY" | "TODAY" | "TOMORROW";
 
 const checkedRadioBgTheme = (category: Category | null) => {
   switch (category) {
