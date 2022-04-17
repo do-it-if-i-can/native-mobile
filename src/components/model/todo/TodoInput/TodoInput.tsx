@@ -81,24 +81,18 @@ export const TodoInput: FC = memo(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (editTodoStateInfo.category) inputRef.current?.focus();
-  }, [editTodoStateInfo.category]);
+  }, [editTodoStateInfo.category, editTodoStateInfo.value]);
 
   return (
     <View style={[style.input_accessory_area, { shadowColor }]} bg="bg1">
-      <View
-        style={{
-          position: "relative",
-        }}
-      >
+      <View style={{ position: "relative" }}>
         <TextInput
           ref={inputRef}
           value={editTodoStateInfo.value}
           onChangeText={onChangeText}
           isFocused={editTodoStateInfo.isFocused}
           viewStyle={style.input_bg}
-          textStyle={{
-            paddingRight: 24,
-          }}
+          textStyle={{ paddingRight: 24 }}
           onFocus={onFocus}
           onBlur={onBlur}
           placeholder="タスクを入力する"
@@ -106,14 +100,7 @@ export const TodoInput: FC = memo(() => {
         />
 
         {editTodoStateInfo.value ? (
-          <IconButton
-            style={{
-              position: "absolute",
-              top: 10,
-              right: 18,
-            }}
-            onPress={onInputClear}
-          >
+          <IconButton style={{ position: "absolute", top: 10, right: 18 }} onPress={onInputClear}>
             <XIcon />
           </IconButton>
         ) : null}
