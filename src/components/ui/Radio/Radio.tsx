@@ -1,5 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
-import React, { useCallback } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 
 import { TouchableOpacity, View } from "~/components/ui/View";
@@ -9,19 +8,15 @@ import type { BgThemeProps } from "~/types/style";
 type Props<T> = BgThemeProps & {
   value: T;
   activeValue: T;
-  onChangeValue?: Dispatch<SetStateAction<T>>;
+  onChangeValue?: () => void;
 };
 
 export const Radio = <T,>(props: Props<T>) => {
   const { bg = "primary", lightBg, darkBg, value, activeValue, onChangeValue } = props;
   const borderColor = useThemeColor({}, "border");
 
-  const onPress = useCallback(() => {
-    onChangeValue && onChangeValue((prev) => (prev === value ? activeValue : value));
-  }, [onChangeValue, value, activeValue]);
-
   return (
-    <TouchableOpacity style={[defaultStyle.ring, { borderColor }]} activeOpacity={1} onPress={onPress}>
+    <TouchableOpacity style={[defaultStyle.ring, { borderColor }]} activeOpacity={1} onPress={onChangeValue}>
       {value === activeValue ? <View style={defaultStyle.active} {...{ lightBg, darkBg, bg }} /> : null}
     </TouchableOpacity>
   );
