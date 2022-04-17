@@ -4,24 +4,24 @@ import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { RecoilRoot } from "recoil";
 
-import { useCachedResources } from "~/hooks/useCachedResources";
+// import { useCachedResources } from "~/hooks/useCachedResources";
 import { Navigation } from "~/screens";
 
 const App = () => {
-  const isLoadingComplete = useCachedResources();
+  // const isLoadingComplete = useCachedResources();
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <RecoilRoot>
-        <SafeAreaProvider>
-          <Navigation />
-          <StatusBar />
-        </SafeAreaProvider>
-      </RecoilRoot>
-    );
-  }
+  // if (!isLoadingComplete) {
+  //   return null;
+  // } else {
+  return (
+    <RecoilRoot>
+      <SafeAreaProvider>
+        <Navigation />
+        <StatusBar />
+      </SafeAreaProvider>
+    </RecoilRoot>
+  );
+  // }
 };
 
 // eslint-disable-next-line import/no-default-export
