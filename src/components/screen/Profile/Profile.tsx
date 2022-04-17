@@ -2,17 +2,21 @@ import { launchImageLibraryAsync, MediaTypeOptions, requestMediaLibraryPermissio
 import type { FC } from "react";
 import React, { useCallback, useState } from "react";
 import { Alert, Platform, StyleSheet } from "react-native";
+import { useRecoilState } from "recoil";
 
 import { Button } from "~/components/ui/Button";
 import { Image } from "~/components/ui/Image";
 import { Text } from "~/components/ui/Text";
 import { TextInput } from "~/components/ui/TextInput";
 import { View } from "~/components/ui/View";
+import { user } from "~/stores/user";
 import type { SettingScreenProps as Props } from "~/types";
 
 export type ProfileScreenProps = Props<"ProfileScreen">;
 
 export const Profile: FC<ProfileScreenProps> = () => {
+  const [authUser, _setAuthUser] = useRecoilState(user);
+  const [name, setName] = useState<string>(authUser?.user?.name || "");
   const [image, setImage] = useState<string | null>(null);
 
   const onPickImage = useCallback(async () => {
@@ -36,6 +40,10 @@ export const Profile: FC<ProfileScreenProps> = () => {
     }
   }, []);
 
+  const onChangeName = useCallback((value: string) => {
+    setName(value);
+  }, []);
+
   return (
     <View style={style.container}>
       <Text style={style.label} color="color2">
@@ -43,10 +51,7 @@ export const Profile: FC<ProfileScreenProps> = () => {
       </Text>
       <View style={style.align_horizontal}>
         <View bg="bg2" style={style.user_icon_box}>
-          <Image
-            source={image ? { uri: image } : require("assets/images/ultimate_gorilla.png")}
-            style={style.user_icon}
-          />
+          <Image source={{ uri: image || authUser?.user?.avatar }} style={style.user_icon} />
         </View>
 
         <Button
@@ -62,7 +67,7 @@ export const Profile: FC<ProfileScreenProps> = () => {
       <Text style={style.label} color="color2">
         名前
       </Text>
-      <TextInput />
+      <TextInput value={name} onChangeText={onChangeName} />
 
       <Button label="保存する" bg="accent" color="white" outlineStyle={style.button_outline} />
     </View>
